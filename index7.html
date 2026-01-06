@@ -253,35 +253,6 @@
             font-size: 1.2em; line-height: 2; color: #2c3e50; 
             text-align: justify;
         }
-        
-        /* New Styles for Readability */
-        .dialogue-name {
-            color: #c62828; /* Strong Red */
-            font-weight: 800;
-            margin-right: 5px;
-            font-family: 'Arial Rounded MT Bold', 'Noto Sans TC', sans-serif;
-        }
-
-        .story-box {
-            background-color: #f1f8e9; /* Very light green */
-            padding: 15px;
-            border-left: 5px solid var(--correct-color);
-            margin: 15px 0;
-            font-style: italic;
-            border-radius: 5px;
-            line-height: 1.8;
-            color: #33691e;
-        }
-
-        .highlight-term {
-            background-color: #fff9c4; /* Highlight yellow */
-            padding: 0 5px;
-            border-radius: 3px;
-            font-weight: bold;
-            color: #f57f17;
-            border: 1px solid #fbc02d;
-        }
-
         .article-title-bar {
             display: flex; justify-content: center; align-items: center; gap: 10px;
             border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 20px; 
@@ -325,7 +296,7 @@
 
         /* Floating Next Button */
         #next-btn {
-            position: absolute; /* Modified for iPad/Mobile clickability */
+            position: absolute; /* 修改：從 fixed 改為 absolute，避免被 iPad 底部系統列遮擋 */
             bottom: 20px;
             right: 20px;
             z-index: 100;
@@ -341,7 +312,7 @@
             font-size: 1.2em;
             font-weight: bold;
             display: none; /* Initially hidden */
-            touch-action: manipulation;
+            touch-action: manipulation; /* 新增：優化觸控裝置的點擊反應 */
         }
         #next-btn:hover { background: #0d47a1; transform: translateY(-2px); }
 
