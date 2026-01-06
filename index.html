@@ -21,11 +21,14 @@
             --header-height: 100px;
         }
 
+        * { box-sizing: border-box; } /* Global Box Sizing */
+
         body { 
             font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif; 
             max-width: 1200px; 
             margin: 0 auto; 
-            padding: calc(var(--header-height) + 20px) 20px 20px 20px; 
+            /* Adjusted padding to fit fixed layout calculation */
+            padding: calc(var(--header-height) + 10px) 10px 10px 10px; 
             background-color: var(--bg-color); 
             color: var(--text-color);
             background-image: 
@@ -34,7 +37,8 @@
             background-position: 0 0, 25px 25px;
             background-size: 50px 50px;
             background-attachment: fixed;
-            min-height: 100vh;
+            height: 100vh; /* Fix body height for app-like feel */
+            overflow: hidden; /* Prevent body scroll */
         }
 
         h1, h2, h3 { text-align: center; color: var(--text-color); }
@@ -69,10 +73,13 @@
         .mode-btn:hover { border-color: var(--primary-color); color: var(--primary-color); }
 
         /* --- Containers --- */
+        /* Updated to allow internal scrolling if content is huge */
         .container-box {
             background: rgba(255, 255, 255, 0.95); padding: 25px; border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05);
             backdrop-filter: blur(10px); position: relative; margin-bottom: 20px;
+            max-height: 100%;
+            overflow-y: auto;
         }
 
         /* --- Welcome Screen --- */
@@ -162,42 +169,86 @@
         .btn-orange { background: var(--accent-color); } .btn-orange:hover { background: #e65100; }
 
         /* --- Standard Quiz Mode (Reading Comprehension) --- */
-        .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .progress-bar-container { width: 100%; background: #e0e0e0; height: 10px; border-radius: 5px; overflow: hidden; margin-bottom: 20px; }
+        #quiz-content {
+            /* Fix height to viewport minus header and padding */
+            /* 100vh - 100px (header) - 10px (padding top) - 10px (padding bottom) = 100vh - 120px */
+            height: calc(100vh - 120px);
+            display: none; /* Controlled by JS */
+            flex-direction: column;
+            overflow: hidden; /* Prevent container itself from scrolling */
+            padding-bottom: 0; /* Remove bottom padding */
+        }
+
+        .quiz-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 10px; 
+            flex: 0 0 auto; /* Don't shrink */
+        }
+        
+        .progress-bar-container { 
+            width: 100%; 
+            background: #e0e0e0; 
+            height: 10px; 
+            border-radius: 5px; 
+            overflow: hidden; 
+            margin-bottom: 5px; 
+            flex: 0 0 auto;
+        }
         .progress-bar-fill { height: 100%; background: var(--secondary-color); width: 0%; transition: width 0.3s; }
         
+        .status-bar {
+            text-align: right; 
+            margin-bottom: 10px; 
+            font-weight: bold; 
+            color: #777;
+            flex: 0 0 auto;
+        }
+
+        /* Layout for Question Container */
+        #question-container {
+            flex: 1; /* Takes all remaining height */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Clip anything spilling out */
+            min-height: 0; /* Flexbox scroll fix */
+        }
+
         .question-box { 
             background: #fff; 
             padding: 0;
             border-radius: 10px; 
             box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
-            margin-bottom: 20px; 
+            margin-bottom: 0; 
             display: flex;
-            /* Changed to column for vertical layout */
             flex-direction: column;
             overflow: hidden;
             border-top: 5px solid var(--primary-color);
+            height: 100%; /* Fill container */
         }
 
         .article-section {
-            width: 100%; /* Full width */
+            width: 100%;
             padding: 20px;
             background: #fafafa;
-            border-bottom: 2px solid #ccc; /* Stronger separation */
+            border-bottom: 4px solid #ddd; /* Stronger separation line */
             
-            /* Sticky Positioning Magic */
-            position: sticky;
-            top: var(--header-height); /* Sticks below the header */
-            z-index: 9000; /* Below header (10000) but above content */
-            max-height: 50vh; /* Max 50% of viewport height */
-            overflow-y: auto; /* Scrollable if content is long */
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            /* FIXED HEIGHT for Article Section */
+            flex: 0 0 40%; /* Fixed at 40% of the space */
+            height: 40%;
+            overflow-y: auto; /* Allow internal scrolling */
         }
 
         .questions-section {
-            width: 100%; /* Full width */
-            padding: 30px;
+            width: 100%;
+            padding: 20px;
             background: #fff;
+            
+            /* SCROLLABLE Area for Questions */
+            flex: 1; /* Takes remaining 60% */
+            overflow-y: auto;
+            padding-bottom: 80px; /* Space for the floating button */
         }
 
         .article-content { 
@@ -245,6 +296,27 @@
             animation: fadeIn 0.5s;
         }
 
+        /* Floating Next Button */
+        #next-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            width: auto;
+            margin-top: 0;
+            padding: 12px 30px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: none; /* Initially hidden */
+        }
+        #next-btn:hover { background: #0d47a1; transform: translateY(-2px); }
+
         /* --- Collection & Mistake & History --- */
         .list-screen-content { padding: 10px; }
         .list-item-card {
@@ -263,7 +335,7 @@
 
         /* --- Modal --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 20000; display: none; justify-content: center; align-items: center; }
-        .modal-content { background: white; padding: 20px; border-radius: 10px; max-width: 90%; max-height: 90%; position: relative; text-align: center; }
+        .modal-content { background: white; padding: 20px; border-radius: 10px; max-width: 90%; max-height: 90%; position: relative; text-align: center; overflow-y: auto;}
         .modal-close { position: absolute; top: -15px; right: -15px; background: red; color: white; width: 30px; height: 30px; border-radius: 50%; border: 2px solid white; cursor: pointer; font-weight: bold;}
 
         /* --- AI Chat Window Styles --- */
@@ -296,24 +368,14 @@
 
         /* RWD */
         @media (max-width: 768px) {
-            #level-screen-content { flex-direction: column; }
-            .dashboard-std-zone { border-right: none; border-bottom: 1px solid #bbdefb; }
-            .card-actions { top: 10px; right: 10px; }
-            #music-player-bar { height: 60px; padding: 0 10px; }
-            body { padding-top: 80px; }
-            #yt-wrapper { display: none; position: fixed; bottom: 10px; right: 10px; width: 120px; height: 67px; top: auto; left: auto; transform: none; }
-            #yt-wrapper.mobile-visible { display: block; }
-            
-            /* AI Chat Mobile Styles */
-            #ai-chat-window { width: 90%; right: 5%; bottom: 80px; height: 50vh; }
-
-            /* Reading Mode Mobile */
-            /* Adjusted Sticky Header for Mobile */
+            #level-screen-content { flex-direction: column; overflow-y: auto; height: 100%;}
+            /* ... other mobile styles ... */
             .article-section { 
-                border-bottom: 2px solid #ccc;
-                top: 60px; /* Adjust for smaller header height */
-                max-height: 40vh; /* Smaller max height on mobile */
+                flex: 0 0 40%; /* Slightly smaller on mobile */
+                height: 40%;
             }
+            body { padding-top: 70px; } /* Adjust for header */
+            #music-player-bar { height: 60px; padding: 0 10px; }
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
@@ -417,7 +479,7 @@
         <div class="progress-bar-container">
             <div id="progress-bar" class="progress-bar-fill"></div>
         </div>
-        <div style="text-align: right; margin-bottom: 10px; font-weight: bold; color: #777;">
+        <div class="status-bar">
             Progress: <span id="current-q-num">1</span> / <span id="total-q-num">5</span>
         </div>
 
@@ -436,7 +498,7 @@
             </div>
         </div>
         
-        <button id="next-btn" class="btn" style="display: none; width: 100%; margin-top: 20px;" onclick="nextQuestion()">Next ➡️</button>
+        <button id="next-btn" class="btn" onclick="nextQuestion()">Next ➡️</button>
     </div>
 
     <!-- Score Screen -->
@@ -734,7 +796,7 @@
 
         function loadQuizUI() {
             hideAllScreens();
-            document.getElementById('quiz-content').style.display = 'block';
+            document.getElementById('quiz-content').style.display = 'flex'; // Use flex for column layout
             let title = "";
             if (quizState.mode === 'level') title = `📖 Level ${quizState.level}`;
             else if (quizState.mode === 'favorites') title = `⭐ My Favorites`;
@@ -897,9 +959,6 @@
             const currentQData = currentQuizData[quizState.currentIndex];
             if(quizState.pageAnsweredCount >= currentQData.subQuestions.length) {
                 document.getElementById('next-btn').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('next-btn').scrollIntoView({behavior: "smooth"});
-                }, 100);
             }
         }
 
@@ -911,7 +970,9 @@
             saveQuizProgress();
             loadQuestion();
             
-            document.querySelector('.container-box').scrollIntoView({behavior: 'smooth'});
+            // No scroll into view needed for fixed layout, maybe reset scroll top
+            document.querySelector('.questions-section').scrollTop = 0;
+            document.querySelector('.article-section').scrollTop = 0;
         }
 
         function finishQuiz() {
