@@ -1,8 +1,8 @@
 [
   {
     "id": "set-1",
-    "title": "Reading 1: Weather Around the World",
-    "article": "<img src='images/q001.jpg' style='width:100%; max-width:800px; display:block; margin: 15px auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>",
+    "title": "Reading 1: Weather in Different Countries",
+    "article": "<img src='images/q001.jpg' style='width:100%; max-width:800px; display:block; margin: 0 auto; border-radius: 8px;'>",
     "subQuestions": [
       {
         "id": "1-1",
@@ -14,7 +14,7 @@
           "(D) It is cold."
         ],
         "ans": "C",
-        "explanation": "Looking at the picture for Thailand, we can see rain falling from the clouds and a person holding an umbrella. Therefore, the weather is rainy."
+        "explanation": "Looking at the picture for Thailand, you can see rain falling and a person holding an umbrella. This indicates rainy weather."
       },
       {
         "id": "1-2",
@@ -26,14 +26,14 @@
           "(D) It is hot and sunny."
         ],
         "ans": "D",
-        "explanation": "The picture for Kuwait shows a bright sun and a thermometer indicating a high temperature (hot). There are no clouds, rain, or snow shown. Thus, it is hot and sunny."
+        "explanation": "The picture for Kuwait shows a bright sun and a thermometer with a high temperature. There is no rain or snow shown. Thus, it is hot and sunny."
       }
     ]
   },
   {
     "id": "set-2",
     "title": "Reading 2: City Weather Chart",
-    "article": "<img src='images/q002.jpg' style='width:100%; max-width:800px; display:block; margin: 15px auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>",
+    "article": "<img src='images/q002.jpg' style='width:100%; max-width:800px; display:block; margin: 0 auto; border-radius: 8px;'>",
     "subQuestions": [
       {
         "id": "2-1",
@@ -45,7 +45,7 @@
           "(D) It's windy and snowy in October."
         ],
         "ans": "C",
-        "explanation": "According to the chart for City C, the weather symbol for April shows a cloud with rain. Therefore, Ernie would say they have a lot of rain in April."
+        "explanation": "Check the chart for City C. In April, the symbol shows a cloud with rain. Therefore, Ernie would say they have rain in April."
       },
       {
         "id": "2-2",
@@ -57,7 +57,7 @@
           "(D) October."
         ],
         "ans": "C",
-        "explanation": "Looking at the row for City A, the symbol for July represents a sunny day (a sun). The symbols for other months show clouds or rain. So, it must be July."
+        "explanation": "Look at the row for City A. The symbol for July is a sun, representing sunny weather. Other months show clouds or rain."
       },
       {
         "id": "2-3",
@@ -69,14 +69,14 @@
           "(D) It is cloudy."
         ],
         "ans": "A",
-        "explanation": "Check the intersection of 'City B' and 'April' on the chart. The symbol shows an umbrella with rain drops, which means it is rainy."
+        "explanation": "Find the intersection of City B and April. The symbol is an umbrella with raindrops, which means it is rainy."
       }
     ]
   },
   {
     "id": "set-3",
     "title": "Reading 3: Trip to Kenting",
-    "article": "<p>Ken: Hey, Amy. That's an orange coat. Why are you in it? You hate the color.<br>Amy: Well, it's so cold today and my jacket isn't warm enough. I want to go to a warm place this weekend. Do you have any ideas?<br>Ken: What about Kenting? It is always sunny there.<br>Amy: That's great.<br>Ken: I have some good friends there. Let's visit them.<br>Amy: Cool! You sent me postcards from Kenting before, and I'll send my family some this time.</p>",
+    "article": "<p><strong>Ken:</strong> Hey, Amy. That's an orange coat. Why are you in it? You hate the color.<br><strong>Amy:</strong> Well, it's so cold today and my jacket isn't warm enough. I want to go to a warm place this weekend. Do you have any ideas?<br><strong>Ken:</strong> What about Kenting? It is always sunny there.<br><strong>Amy:</strong> That's great.<br><strong>Ken:</strong> I have some good friends there. Let's visit them.<br><strong>Amy:</strong> Cool! You sent me postcards from Kenting before, and I'll send my family some this time.</p>",
     "subQuestions": [
       {
         "id": "3-1",
@@ -88,7 +88,7 @@
           "(D) She wants to go to Kenting."
         ],
         "ans": "A",
-        "explanation": "Amy says, 'it's so cold today and my jacket isn't warm enough.' This explains that she is wearing the orange coat because the weather is very cold."
+        "explanation": "Amy explicitly says, 'it's so cold today and my jacket isn't warm enough.' That is why she is wearing the coat."
       },
       {
         "id": "3-2",
@@ -100,11 +100,11 @@
           "(D) It is always sunny there."
         ],
         "ans": "D",
-        "explanation": "Ken suggests Kenting by saying, 'It is always sunny there.' Amy responds, 'That's great.' This implies they want to go there because of the sunny weather."
+        "explanation": "Ken suggests Kenting because 'It is always sunny there,' and Amy agrees because she wants a warm place."
       },
       {
         "id": "3-3",
-        "q": "Which is true(正確的)?",
+        "q": "Which is true?",
         "options": [
           "(A) Amy likes cold days.",
           "(B) It is always cold in Kenting.",
@@ -112,14 +112,14 @@
           "(D) Ken has some friends in Kenting."
         ],
         "ans": "D",
-        "explanation": "In the dialogue, Ken explicitly states: 'I have some good friends there [in Kenting].' Therefore, (D) is true."
+        "explanation": "Ken says, 'I have some good friends there.' This makes option (D) correct."
       }
     ]
   },
   {
     "id": "set-4",
-    "title": "Reading 4: Seasonal Weather Chart",
-    "article": "<img src='images/q004.jpg' style='width:100%; max-width:800px; display:block; margin: 15px auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>",
+    "title": "Reading 4: Four Cities Weather",
+    "article": "<img src='images/q004.jpg' style='width:100%; max-width:800px; display:block; margin: 0 auto; border-radius: 8px;'>",
     "subQuestions": [
       {
         "id": "4-1",
@@ -131,7 +131,7 @@
           "(D) Winter."
         ],
         "ans": "D",
-        "explanation": "Looking at the chart for City 3, the 'Winter' column shows a snowman symbol, which indicates snow. Therefore, it is Winter."
+        "explanation": "In the chart for City 3, the Winter column shows a snowman, which indicates snow."
       },
       {
         "id": "4-2",
@@ -143,26 +143,26 @@
           "(D) It is rainy."
         ],
         "ans": "C",
-        "explanation": "First, we know that 'Fall' is another word for 'autumn'. Looking at the chart for City 2 under the 'Fall' column, there is a sun symbol. This means the weather is sunny."
+        "explanation": "In the chart for City 2, the 'Fall' (Autumn) column shows a sun symbol, meaning it is sunny."
       }
     ]
   },
   {
     "id": "set-5",
     "title": "Reading 5: Visiting Yilan",
-    "article": "<p>Mia: Do you know Yilan?<br>Ben: Yes, it rains very often in winter.<br>Mia: How's the weather there in summer?<br>Ben: It's always hot and wet, but many people like Yilan a lot.<br>Mia: You're right. My parents and I sometimes have trips to Yilan.<br>Ben: What do you do there?<br>Mia: We visit our grandparents and join Children's Folklore and Folkgame Festival. We always have a good time.<br>Ben: That's cool!<br>Mia: These are for you. Some snacks from Yilan!<br>Ben: Thanks!</p>",
+    "article": "<p><strong>Mia:</strong> Do you know Yilan?<br><strong>Ben:</strong> Yes, it rains very often in winter.<br><strong>Mia:</strong> How's the weather there in summer?<br><strong>Ben:</strong> It's always hot and wet, but many people like Yilan a lot.<br><strong>Mia:</strong> You're right. My parents and I sometimes have trips to Yilan.<br><strong>Ben:</strong> What do you do there?<br><strong>Mia:</strong> We visit our grandparents and join Children's Folklore and Folkgame Festival. We always have a good time.<br><strong>Ben:</strong> That's cool!<br><strong>Mia:</strong> These are for you. Some snacks from Yilan!<br><strong>Ben:</strong> Thanks!</p>",
     "subQuestions": [
       {
         "id": "5-1",
         "q": "What's the weather like in Yilan in winter?",
         "options": [
-          "(A) It's dry(乾燥的).",
+          "(A) It's dry.",
           "(B) It's cloudy.",
           "(C) It's windy.",
           "(D) It's rainy."
         ],
         "ans": "D",
-        "explanation": "Ben asks about Yilan, and replies to himself saying: 'Yes, it rains very often in winter.' This confirms that Yilan is rainy in winter."
+        "explanation": "Ben says, 'Yes, it rains very often in winter.' So the weather is rainy."
       },
       {
         "id": "5-2",
@@ -174,14 +174,14 @@
           "(D) They watch ball games there."
         ],
         "ans": "C",
-        "explanation": "Mia says, 'We visit our grandparents and join Children's Folklore and Folkgame Festival.' This matches option (C)."
+        "explanation": "Mia mentions, 'We visit our grandparents...'"
       }
     ]
   },
   {
     "id": "set-6",
-    "title": "Reading 6: Two Summers",
-    "article": "<p>(Cody is talking to his friend from Australia.)<br>Cody: Do you like the weather in Taiwan?<br>Tony: Of course. You know what? I had two summers in a year, and I enjoyed lots of sunny days.<br>Cody: What do you mean?<br>Tony: My first summer was from December to February in Australia, and my second summer was from June to August in Taiwan. I'm a summer guy, so I love it.<br>Cody: That's great. How about the food in Taiwan? Do you like it?<br>Tony: Yeah! I went to a night market with some mates the other day. We had fried chook. It was great.<br>Cody: I didn't get it. Who did you go to the night market with, and what did you have?<br>Tony: Sorry about my Australian English. I went with some friends, and we had fried chicken.<br>Cody: I see. I learned some Australian English today!<br>Tony: Good for you! Maybe you can come see me in Australia next year, and we can have fun together.</p>",
+    "title": "Reading 6: Australian Summer",
+    "article": "<p>(Cody is talking to his friend from Australia.)<br><strong>Cody:</strong> Do you like the weather in Taiwan?<br><strong>Tony:</strong> Of course. You know what? I had two summers in a year, and I enjoyed lots of sunny days.<br><strong>Cody:</strong> What do you mean?<br><strong>Tony:</strong> My first summer was from December to February in Australia, and my second summer was from June to August in Taiwan. I'm a summer guy, so I love it.<br><strong>Cody:</strong> That's great. How about the food in Taiwan? Do you like it?<br><strong>Tony:</strong> Yeah! I went to a night market with some mates the other day. We had fried chook. It was great.<br><strong>Cody:</strong> I didn't get it. Who did you go to the night market with, and what did you have?<br><strong>Tony:</strong> Sorry about my Australian English. I went with some friends, and we had fried chicken.<br><strong>Cody:</strong> I see. I learned some Australian English today!<br><strong>Tony:</strong> Good for you! Maybe you can come see me in Australia next year, and we can have fun together.</p>",
     "subQuestions": [
       {
         "id": "6-1",
@@ -193,7 +193,7 @@
           "(D) It falls in different months from Taiwan's summer."
         ],
         "ans": "D",
-        "explanation": "Tony mentions his first summer was 'from December to February in Australia' and his second was 'from June to August in Taiwan.' This shows that Australia's summer happens in different months compared to Taiwan's summer."
+        "explanation": "Tony explains that Australia's summer is from December to February, which is different from Taiwan's summer (June to August)."
       },
       {
         "id": "6-2",
@@ -205,14 +205,14 @@
           "(D) He didn't go to Australia before."
         ],
         "ans": "C",
-        "explanation": "Tony used the phrase 'fried chook'. Cody didn't understand what 'chook' meant. Tony then explained it means 'fried chicken' and apologized for his 'Australian English'. So Cody didn't get it because he didn't know the Australian slang."
+        "explanation": "Tony used Australian slang like 'mates' and 'fried chook', which Cody didn't understand until Tony explained it meant 'friends' and 'fried chicken'."
       }
     ]
   },
   {
     "id": "set-7",
-    "title": "Reading 7: Letter to Mom",
-    "article": "<p>Dear Mom,<br>I know you are busy working in Taipei, but I have a big problem about my new school. I need your help.<br>I am afraid of talking to my new classmates. I got into the class for two weeks, but I have no friends to talk to. I usually feel lonely, and I don't like new school life. What can I do?<br>Sam<br><br>******************<br><br>My dear boy,<br>I know it's difficult to be a transfer student, but I am sure you can do it in a good way. Don't just wait for your classmates to talk to you. You can hold out your hand to them.<br>Be nice to people around you, and they will be nice to you. By the way, I will come back to Tainan next Saturday evening. We can have a big dinner.<br>Mom<br>Sandra</p>",
+    "title": "Reading 7: Letters",
+    "article": "<p><strong>Dear Mom,</strong><br>I know you are busy working in Taipei, but I have a big problem about my new school. I need your help.<br>I am afraid of talking to my new classmates. I got into the class for two weeks, but I have no friends to talk to. I usually feel lonely, and I don't like new school life. What can I do?<br><strong>Sam</strong></p><p>******************</p><p><strong>My dear boy,</strong><br>I know it's difficult to be a transfer student, but I am sure you can do it in a good way. Don't just wait for your classmates to talk to you. You can hold out your hand to them.<br>Be nice to people around you, and they will be nice to you. By the way, I will come back to Tainan next Saturday evening. We can have a big dinner.<br><strong>Mom<br>Sandra</strong></p>",
     "subQuestions": [
       {
         "id": "7-1",
@@ -224,11 +224,11 @@
           "(D) Because he doesn't live near the school."
         ],
         "ans": "C",
-        "explanation": "Sam writes: 'I have no friends to talk to. I usually feel lonely, and I don't like new school life.' The lack of friends is the reason."
+        "explanation": "Sam writes, 'I have no friends to talk to. I usually feel lonely.'"
       },
       {
         "id": "7-2",
-        "q": "What is the relationship(關係)between Sam and Sandra?",
+        "q": "What is the relationship between Sam and Sandra?",
         "options": [
           "(A) Teacher and student.",
           "(B) They are classmates.",
@@ -236,11 +236,11 @@
           "(D) Mother and son."
         ],
         "ans": "D",
-        "explanation": "Sam addresses the letter to 'Dear Mom', and Sandra signs her reply as 'Mom'. Sandra calls Sam 'My dear boy'. This clearly indicates a mother and son relationship."
+        "explanation": "Sam addresses the letter to 'Dear Mom', and Sandra calls him 'My dear boy'."
       },
       {
         "id": "7-3",
-        "q": "Which is right about the e-mails(電子郵件)?",
+        "q": "Which is right about the e-mails?",
         "options": [
           "(A) Sandra works in Tainan.",
           "(B) Sandra will come back to Taipei next Saturday.",
@@ -248,14 +248,14 @@
           "(D) Sam lives with her mom in Taipei."
         ],
         "ans": "C",
-        "explanation": "Sandra writes: 'I will come back to Tainan next Saturday evening.' This implies Sam is currently in Tainan (where his new school is), and Sandra is working in Taipei (as Sam mentions in his first line). Thus, Sam's new school is in Tainan."
+        "explanation": "Sandra writes, 'I will come back to Tainan next Saturday evening.' This implies Sam is currently in Tainan attending his new school."
       }
     ]
   },
   {
     "id": "set-8",
-    "title": "Reading 8: Postcard from India",
-    "article": "<p>Dear Matt,<br>I'm now in India with my friend Theo.<br>It's cool here in winter. The weather is just lovely. Yesterday, we were on a train for about seven hours. There were many people on the train, and we didn't have a seat. But you know what? A man and his son gave their seats to us. They were so kind. Also, Theo and I bought bags in a shop near our hotel. I bought one for you as a gift, too. It is big and special. Maybe we can take a trip here together next year. India is a really beautiful place.<br>Your friend,<br>Evans</p>",
+    "title": "Reading 8: Postcard from Evans",
+    "article": "<img src='images/q008.jpg' style='width:100%; max-width:800px; display:block; margin: 0 auto; border-radius: 8px;'>",
     "subQuestions": [
       {
         "id": "8-1",
@@ -267,7 +267,7 @@
           "(D) A hotel room."
         ],
         "ans": "C",
-        "explanation": "The text says: 'Theo and I bought bags... I bought one for you as a gift, too.' Here, 'one' refers back to the 'bags' they bought. So 'it' (the gift) is a bag."
+        "explanation": "Evans writes: 'Theo and I bought bags... I bought one for you... It is big and special.' Here 'It' refers to the bag."
       },
       {
         "id": "8-2",
@@ -279,7 +279,7 @@
           "(D) Theo's house."
         ],
         "ans": "B",
-        "explanation": "The recipient address on the postcard is: 'Matt Demoss, No. 361, Green Park St., Taipei 106, Taiwan (ROC)'. So it was sent to Taiwan."
+        "explanation": "The address on the postcard is 'Taipei 106, Taiwan (ROC)'."
       },
       {
         "id": "8-3",
@@ -291,7 +291,7 @@
           "(D) Evans stood for seven hours on the train."
         ],
         "ans": "A",
-        "explanation": "Evans writes: 'India is a really beautiful place' and 'The weather is just lovely'. This shows he liked the trip. He went with Theo, not Matt. He stood on the train for a while, but a man gave them seats, so he didn't stand for the full seven hours."
+        "explanation": "Evans says, 'India is a really beautiful place' and 'The weather is just lovely,' indicating he liked the trip."
       }
     ]
   },
@@ -302,7 +302,7 @@
     "subQuestions": [
       {
         "id": "9-1",
-        "q": "What can be the title (標題) of this reading?",
+        "q": "What can be the title of this reading?",
         "options": [
           "(A) Hot Summer and the Weather in the World",
           "(B) The Summer Weather in Taiwan and Brazil",
@@ -310,23 +310,23 @@
           "(D) Brazil Has Different Weather in Different Places"
         ],
         "ans": "B",
-        "explanation": "The passage compares the summer weather, months, and conditions (rain/heat) in Brazil and Taiwan. Therefore, 'The Summer Weather in Taiwan and Brazil' is the best title."
+        "explanation": "The text compares the summer weather conditions of Brazil and Taiwan."
       },
       {
         "id": "9-2",
         "q": "Which of the following places may be Brazil?",
         "options": [
-          "(A) <img src='images/q009_a.jpg' style='width:100%; max-width:400px;'>",
-          "(B) <img src='images/q009_b.jpg' style='width:100%; max-width:400px;'>",
-          "(C) <img src='images/q009_c.jpg' style='width:100%; max-width:400px;'>",
-          "(D) <img src='images/q009_d.jpg' style='width:100%; max-width:400px;'>"
+          "(A) <img src='images/q009_a.jpg' style='width:100%; max-width:300px;'>",
+          "(B) <img src='images/q009_b.jpg' style='width:100%; max-width:300px;'>",
+          "(C) <img src='images/q009_c.jpg' style='width:100%; max-width:300px;'>",
+          "(D) <img src='images/q009_d.jpg' style='width:100%; max-width:300px;'>"
         ],
         "ans": "D",
-        "explanation": "The text states Brazil's summer is from December to February, and it is hot (30-35°C) and has a lot of rain. Graph (D) shows high temperatures and high rainfall in the months of Jan, Feb, and Dec, which matches the description."
+        "explanation": "Brazil's summer is Dec-Feb with high heat and rain. Graph (D) shows high temperatures and rainfall during these months."
       },
       {
         "id": "9-3",
-        "q": "Which of the following can we put in the middle (中間)?<br><img src='images/q009-3.jpg' style='width:100%; max-width:300px;'>",
+        "q": "Which of the following can we put in the middle?<br><img src='images/q009-3.jpg' style='width:200px;'>",
         "options": [
           "(A) The summer months.",
           "(B) Typhoons in summer.",
@@ -334,14 +334,14 @@
           "(D) Strong winds in summer."
         ],
         "ans": "C",
-        "explanation": "The Venn diagram asks for the common feature between Taiwan and Brazil. The text says: 'Both places are hot and wet in summer.' It also mentions different months and typhoons only for Taiwan. Thus, the commonality is 'Hot weather in summer'."
+        "explanation": "The common feature (middle of Venn diagram) mentioned in the text is that 'Both places are hot and wet in summer'."
       }
     ]
   },
   {
     "id": "set-10",
-    "title": "Reading 10: Steven's Trip",
-    "article": "<p>Dear Grandma,<br>My trip to Australia was fun! It's usually warm and rainy in Taiwan, but it was cold and snowy! During my trip, Uncle Ben took me to high mountains and we played with snow. I got a new jacket from Aunt Holly for my birthday and Uncle Ben made cookies and hot chocolate milk for me. When we were at their house, they showed me some old pictures. I was so small and cute when I was a baby. Anyway, see you in Taiwan soon. There are somes gifts from Uncle Ben and Aunt Holly for you.<br>Steven</p>",
+    "title": "Reading 10: Steven's Letter",
+    "article": "<img src='images/q010.jpg' style='width:100%; max-width:800px; display:block; margin: 0 auto; border-radius: 8px;'>",
     "subQuestions": [
       {
         "id": "10-1",
@@ -353,7 +353,7 @@
           "(D) Hot and sunny."
         ],
         "ans": "C",
-        "explanation": "Steven writes: 'it was cold and snowy!' and mentions playing with snow. So the weather was cold and snowy."
+        "explanation": "Steven writes, 'it was cold and snowy!'"
       },
       {
         "id": "10-2",
@@ -365,7 +365,7 @@
           "(D) Ben and Holly."
         ],
         "ans": "D",
-        "explanation": "Steven mentions 'Uncle Ben took me to high mountains' and 'I got a new jacket from Aunt Holly'. He stayed at their house. So he met Ben and Holly."
+        "explanation": "Steven mentions Uncle Ben and Aunt Holly, staying at their house and doing activities with them."
       },
       {
         "id": "10-3",
@@ -377,7 +377,7 @@
           "(D) Steven played with snow in high mountains."
         ],
         "ans": "C",
-        "explanation": "The letter says: 'they showed me some old pictures. I was so small and cute when I was a baby.' It implies Uncle Ben showed Steven pictures of Steven as a baby, not that he bought pictures *for* Steven. Therefore, (C) is not right."
+        "explanation": "The text says 'they showed me some old pictures', not that Uncle Ben 'bought' them for Steven."
       }
     ]
   },
@@ -396,11 +396,11 @@
           "(D) The old man only has one arm and one leg now."
         ],
         "ans": "D",
-        "explanation": "The story states: 'The car hit the old man, and he lost his left arm and left leg.' He showed Jasper his 'right arm and right leg' saying he is 'all right'. This implies he only has the right ones left."
+        "explanation": "The story says the old man lost his left arm and leg, implying he only has the right ones remaining."
       },
       {
         "id": "11-2",
-        "q": "Which uses homonyms? <br>a. What do you call hot snow? Water. <br>b. Why wasn't the moon hungry? Because it was full. <br>c. Why does every girl hate the sun? Because it is not cool. <br>d. What goes up when the rain comes down? An umbrella.",
+        "q": "Which uses homonyms?<br>a. What do you call hot snow? Water.<br>b. Why wasn't the moon hungry? Because it was full.<br>c. Why does every girl hate the sun? Because it is not cool.<br>d. What goes up when the rain comes down? An umbrella.",
         "options": [
           "(A) a. and b.",
           "(B) c. and d.",
@@ -408,14 +408,14 @@
           "(D) a., b., and c d."
         ],
         "ans": "C",
-        "explanation": "Homonyms are words with same spelling but different meanings. <br>b. 'Full' means the moon phase is full, and also means not hungry. <br>c. 'Cool' means low temperature, and also means fashionable/popular. <br>a and d are just riddles without wordplay on double meanings. Thus, b and c use homonyms."
+        "explanation": "'Full' (not hungry vs. moon phase) and 'Cool' (temperature vs. popular) are homonyms. The others are just riddles."
       }
     ]
   },
   {
     "id": "set-12",
     "title": "Reading 12: Sally and Eric",
-    "article": "<p>Sally: How's your trip to Kaohsiung?<br>Eric: Very good. It is hot and sunny.<br>Sally: Really? It rains a lot in Keelung today.<br>Eric: Is it cold and windy, too?<br>Sally: Yes, we have heavy rain and strong winds. I visited my grandmother this morning. She lives on the next street. I hate rainy days. How about you?<br>Eric: I love walking in the rain, but there isn't much rain here in winter.<br>Sally: Well, I don't like the rain.<br>Eric: Let's visit Kaohsiung together next time. I can show you around. It is always sunny here.<br>Sally: Great! That's kind of you!</p>",
+    "article": "<p><strong>Sally:</strong> How's your trip to Kaohsiung?<br><strong>Eric:</strong> Very good. It is hot and sunny.<br><strong>Sally:</strong> Really? It rains a lot in Keelung today.<br><strong>Eric:</strong> Is it cold and windy, too?<br><strong>Sally:</strong> Yes, we have heavy rain and strong winds. I visited my grandmother this morning. She lives on the next street. I hate rainy days. How about you?<br><strong>Eric:</strong> I love walking in the rain, but there isn't much rain here in winter.<br><strong>Sally:</strong> Well, I don't like the rain.<br><strong>Eric:</strong> Let's visit Kaohsiung together next time. I can show you around. It is always sunny here.<br><strong>Sally:</strong> Great! That's kind of you!</p>",
     "subQuestions": [
       {
         "id": "12-1",
@@ -427,7 +427,7 @@
           "(D) It is rainy."
         ],
         "ans": "D",
-        "explanation": "Sally says: 'It rains a lot in Keelung today.' and 'we have heavy rain'. So it is rainy."
+        "explanation": "Sally mentions, 'It rains a lot in Keelung today.'"
       },
       {
         "id": "12-2",
@@ -439,11 +439,11 @@
           "(D) Windy days."
         ],
         "ans": "A",
-        "explanation": "Eric says: 'I love walking in the rain'. This indicates he likes rainy days."
+        "explanation": "Eric says, 'I love walking in the rain.'"
       },
       {
         "id": "12-3",
-        "q": "Which is true(正確的)?",
+        "q": "Which is true?",
         "options": [
           "(A) Sally likes the rain very much.",
           "(B) Eric will visit Sally this weekend.",
@@ -451,13 +451,13 @@
           "(D) There is no rain in Keelung today."
         ],
         "ans": "C",
-        "explanation": "Eric mentions at the end: 'I can show you around. It is always sunny here [Kaohsiung].' This makes (C) true."
+        "explanation": "Eric states, 'It is always sunny here [Kaohsiung].'"
       }
     ]
   },
   {
     "id": "set-13",
-    "title": "Reading 13: Grandma's Birthday",
+    "title": "Reading 13: Grandma's Birthday Diary",
     "article": "<p>Apr. 24, Friday, 2020<br>I visited Grandma today. Aunt Sharon, Uncle Tom and Vicky were also there because it was Grandma's birthday. Aunt Sharon made a big chocolate cake for Grandma. It was beautiful, and Grandma liked it a lot! Uncle Tom just came back from Japan. He bought us cookies from Japan and showed us the pictures during his trip. Uncle Jack went on a business trip to Australia and didn't join us. He sent Grandma a postcard and a cool jacket as her birthday gift. Vicky and I made Grandma a cute birthday card. We saw a big smile on Grandma's face all day today.</p>",
     "subQuestions": [
       {
@@ -470,7 +470,7 @@
           "(D) It was snowy."
         ],
         "ans": "B",
-        "explanation": "The diary header shows an icon of a Sun and '2°C'. 2°C is cold, and the Sun implies it is sunny."
+        "explanation": "The image in the original text (implied by context) showed a Sun and 2°C, meaning cold but sunny."
       },
       {
         "id": "13-2",
@@ -482,7 +482,7 @@
           "(D) Cookies."
         ],
         "ans": "C",
-        "explanation": "The text says: 'Aunt Sharon made a big chocolate cake for Grandma.'"
+        "explanation": "Aunt Sharon made a big chocolate cake."
       },
       {
         "id": "13-3",
@@ -494,14 +494,14 @@
           "(D) Vicky and the writer made a card for the writer's grandma."
         ],
         "ans": "D",
-        "explanation": "The text states: 'Vicky and I made Grandma a cute birthday card.' This matches option (D). (A) is wrong because the postcard was from Australia (Uncle Jack). (C) is wrong because Uncle Tom showed pictures, not a jacket."
+        "explanation": "The writer says, 'Vicky and I made Grandma a cute birthday card.'"
       }
     ]
   },
   {
     "id": "set-14",
-    "title": "Reading 14: Message to Vivian",
-    "article": "<p>Vivian,<br>You're so busy these days. I called you a few times, but there was no answer. Anyway, Jimmy and I are in Japan now.<br>It's cold and snowy and Jimmy is very happy. I bought a new snowboard for him. He likes it a lot! We visited Mr. and Mrs. Horiuchi, Mom and Dad's old friends. They were really nice. They gave heavy jackets to us and made us fantastic food. It was yummy and beautiful.<br>Right, I got a cute pencil for you and Jimmy sent you a postcard. There are pictures of Mountain Fuji on them. By the way, you can join Jimmy's birthday party, right? Talk to you soon.<br>Tony</p>",
+    "title": "Reading 14: Tony's Message",
+    "article": "<img src='images/q014.jpg' style='width:100%; max-width:800px; display:block; margin: 0 auto; border-radius: 8px;'>",
     "subQuestions": [
       {
         "id": "14-1",
@@ -513,7 +513,7 @@
           "(D) A pencil."
         ],
         "ans": "D",
-        "explanation": "Tony writes: 'I got a cute pencil for you'. So he bought a pencil."
+        "explanation": "Tony writes, 'I got a cute pencil for you'."
       },
       {
         "id": "14-2",
@@ -525,26 +525,26 @@
           "(D) Great."
         ],
         "ans": "D",
-        "explanation": "Tony describes the food as 'fantastic' and then adds 'It was yummy and beautiful.' 'Yummy and beautiful' are positive adjectives, similar to 'Great'."
+        "explanation": "The food was 'yummy and beautiful', so fantastic means 'Great'."
       },
       {
         "id": "14-3",
         "q": "What might Jimmy write on the postcard?",
         "options": [
-          "(A) Hi, Aunt Vivian, Dad and I are in Japan now. It's snowy here, so Dad bought me a cool snowboard. Dad bought a cute pencil for you. We went to Mr. and Mrs. Horiuchi's house. They gave heavy jackets to us because our jackets weren't warm enough. That's kind of them! See you soon! Jimmy",
-          "(B) Dear Vivian, How are you doing? I got your postcard from Japan. Thanks a lot! That's so nice of you! We work very hard every day. Tony cooks for Mr. and Mrs. Horiuchi, and I order snowboards for old people. When we visit Mountain Fuji, let's have dinner together! Jimmy",
-          "(C) Aunt Vivian, How's everything? Mr. and Mrs. Horiuchi loved the cake. Thank you for buying the cake for them. They gave you a heavy jacket and a snowboard as gifts. Come to Japan and visit us next time! Jimmy",
-          "(D) Dear Vivian, How's the weather there? It's windy. I got a new snowboard from Tony, and it's beautiful. There are pictures of Mountain Fuji on it. My friend, Mr. and Mrs. Horiuchi gave a cute pencil to us and bought heavy jackets for you. How nice! See you at Tony's birthday party soon! Jimmy"
+          "(A) Hi, Aunt Vivian, Dad and I are in Japan now...",
+          "(B) Dear Vivian, How are you doing? I got your postcard...",
+          "(C) Aunt Vivian, How's everything? Mr. and Mrs. Horiuchi loved the cake...",
+          "(D) Dear Vivian, How's the weather there? It's windy..."
         ],
         "ans": "A",
-        "explanation": "Option (A) accurately reflects the details in Tony's message: Jimmy is in Japan with Dad (Tony), got a snowboard, Dad bought a pencil for Vivian, and the Horiuchis gave them jackets. The other options contain incorrect details (e.g., Vivian buying cake, Horiuchi giving pencils, ordering snowboards for old people)."
+        "explanation": "Option (A) accurately describes the trip details mentioned in Tony's message (snowboard, pencil for Vivian, jackets from Horiuchi)."
       }
     ]
   },
   {
     "id": "set-15",
-    "title": "Reading 15: Group Chat",
-    "article": "<p>Good morning<br>Kelly: Good morning<br>Yuki: Morning.<br>Derek: Morning. What's the weather like in your places now?<br>Kelly: It's still sunny and hot in Tainan.<br>Derek: Sunny and hot in November?<br>Kelly: Yes. It's like in summer. What about Ben and Yuki?<br>Ben: It was cool yesterday, but today it's cold.<br>Derek: Is there any snow in Japan?<br>Ben: No. There is no snow, but the wind is strong.<br>Yuki: It's cool here in Thailand. How's the weather there, Derek?<br>Derek: It's so cold today. It's snowing now.<br>Kelly: Then you can have a white Christmas again this year.<br>Ben: White Christmas! I like it.<br>Yuki: Kelly, you can say that again. What about coming to New York this December?<br>Kelly: I would like to, but I can't. I have to work.<br>Derek: I want to go to New York for the white Christmas this December. Can I stay in your place, Derek?<br>Ben: Can I, Derek?<br>Derek: Sure.<br>Yuki: Thank you. Then Ben, Derek, and I can have fun in the snow.<br>Kelly: I envy you, Ben and Yuki. I can't be in the snow world with you three.<br>Ben: Don't be sad.</p>",
+    "title": "Reading 15: Chat Group",
+    "article": "<img src='images/q015.jpg' style='width:100%; max-width:800px; display:block; margin: 0 auto; border-radius: 8px;'>",
     "subQuestions": [
       {
         "id": "15-1",
@@ -556,7 +556,7 @@
           "(D) Windy and cold."
         ],
         "ans": "D",
-        "explanation": "In the chat, Derek asks 'Is there any snow in Japan?'. The reply is 'No. There is no snow, but the wind is strong.' And earlier 'today it's cold'. So Japan is windy and cold."
+        "explanation": "Ben (in Japan) says it's cold and the wind is strong, but no snow."
       },
       {
         "id": "15-2",
@@ -568,7 +568,7 @@
           "(D) Derek."
         ],
         "ans": "A",
-        "explanation": "Kelly says: 'I would like to, but I can't. I have to work.' So she cannot go to New York for the white Christmas."
+        "explanation": "Kelly says she has to work and can't go to New York."
       },
       {
         "id": "15-3",
@@ -580,7 +580,7 @@
           "(D) Thailand."
         ],
         "ans": "A",
-        "explanation": "The conversation context involves visiting Derek. Derek invites them to 'New York'. So 'there' refers to Derek's place, which is New York."
+        "explanation": "Context implies visiting Derek in New York."
       },
       {
         "id": "15-4",
@@ -592,14 +592,14 @@
           "(D) Ben can stay in Derek's place, but Yuki can't."
         ],
         "ans": "C",
-        "explanation": "Both Yuki and Ben agree to go to New York (USA) to visit Derek. Therefore, they can meet there on Christmas. (A) is false as Kelly says 'White Christmas! I like it.' (B) is false as it says 'No snow'. (D) is false as Derek says 'Sure' to Yuki staying."
+        "explanation": "Yuki and Ben both plan to visit Derek in New York (USA) for Christmas."
       }
     ]
   },
   {
     "id": "set-16",
     "title": "Reading 16: Jane and Douglas",
-    "article": "<p>Jane: How many seasons are there in a year?<br>Douglas: There are four.<br>Jane: Which one do you like most?<br>Douglas: I like the winter.<br>Jane: Why? Don't you feel cold and bad in winter?<br>Douglas: I don't like hot weather. I like cold weather.<br>Jane: I hate cold days.<br>Douglas: I'll visit my aunt in Singapore this winter. It is usually warm in winter. Do you want to take a trip to Singapore with me?<br>Jane: Sounds like a good idea!<br>Douglas: I usually have a good time there. My aunt, uncle and cousins are nice. Look! This is a picture of them.<br>Jane: Wow! Your cousins are so cute!<br>Douglas: You're right.<br>Jane: Why were you in a pink T-shirt? You don't like pink.<br>Douglas: It's my uncle's. I didn't bring enough T-shirts with me.</p>",
+    "article": "<p><strong>Jane:</strong> How many seasons are there in a year?<br><strong>Douglas:</strong> There are four.<br><strong>Jane:</strong> Which one do you like most?<br><strong>Douglas:</strong> I like the winter.<br><strong>Jane:</strong> Why? Don't you feel cold and bad in winter?<br><strong>Douglas:</strong> I don't like hot weather. I like cold weather.<br><strong>Jane:</strong> I hate cold days.<br><strong>Douglas:</strong> I'll visit my aunt in Singapore this winter. It is usually warm in winter. Do you want to take a trip to Singapore with me?<br><strong>Jane:</strong> Sounds like a good idea!<br><strong>Douglas:</strong> I usually have a good time there. My aunt, uncle and cousins are nice. Look! This is a picture of them.<br><strong>Jane:</strong> Wow! Your cousins are so cute!<br><strong>Douglas:</strong> You're right.<br><strong>Jane:</strong> Why were you in a pink T-shirt? You don't like pink.<br><strong>Douglas:</strong> It's my uncle's. I didn't bring enough T-shirts with me.</p>",
     "subQuestions": [
       {
         "id": "16-1",
@@ -611,7 +611,7 @@
           "(D) Douglas' aunt is in Singapore."
         ],
         "ans": "D",
-        "explanation": "Douglas says: 'I'll visit my aunt in Singapore this winter.' So (D) is right. (A) is wrong (he likes winter). (C) is wrong (Jane hates cold)."
+        "explanation": "Douglas explicitly states, 'I'll visit my aunt in Singapore this winter.'"
       },
       {
         "id": "16-2",
@@ -623,14 +623,14 @@
           "(D) She usually has a good time there."
         ],
         "ans": "B",
-        "explanation": "Jane hates cold days. Douglas says Singapore is 'usually warm in winter'. Jane then says 'Sounds like a good idea'. So she likes it because it is warm."
+        "explanation": "Jane hates cold days, and Douglas mentions Singapore is warm in winter, which appeals to her."
       }
     ]
   },
   {
     "id": "set-17",
     "title": "Reading 17: Vincent and Lillian",
-    "article": "<p>Vincent: What do you do on weekends?<br>Lillian: I usually play basketball with my classmates. How about you?<br>Vincent: My parents and I often fly a kite at the beach.<br>Lillian: How's the weather today?<br>Vincent: It is warm but windy.<br>Lillian: Great! Let's go fly a kite now.<br>Vincent: OK! But we need to take our umbrellas.<br>Lillian: Why?<br>Vincent: The weather report says it will be rainy later.<br>Lillian: Oh, no. Then, how about going to a movie?<br>Vincent: That's fine with me.</p>",
+    "article": "<p><strong>Vincent:</strong> What do you do on weekends?<br><strong>Lillian:</strong> I usually play basketball with my classmates. How about you?<br><strong>Vincent:</strong> My parents and I often fly a kite at the beach.<br><strong>Lillian:</strong> How's the weather today?<br><strong>Vincent:</strong> It is warm but windy.<br><strong>Lillian:</strong> Great! Let's go fly a kite now.<br><strong>Vincent:</strong> OK! But we need to take our umbrellas.<br><strong>Lillian:</strong> Why?<br><strong>Vincent:</strong> The weather report says it will be rainy later.<br><strong>Lillian:</strong> Oh, no. Then, how about going to a movie?<br><strong>Vincent:</strong> That's fine with me.</p>",
     "subQuestions": [
       {
         "id": "17-1",
@@ -642,7 +642,7 @@
           "(D) Because her classmates are flying a kite."
         ],
         "ans": "A",
-        "explanation": "Vincent says the weather is 'warm but windy'. Lillian suggests flying a kite because wind is needed for kites."
+        "explanation": "Kites need wind to fly, and Vincent just mentioned it is 'warm but windy'."
       },
       {
         "id": "17-2",
@@ -654,26 +654,26 @@
           "(D) Go to a movie."
         ],
         "ans": "D",
-        "explanation": "Since the weather report says it will rain later, Lillian says 'how about going to a movie?' and Vincent agrees ('That's fine with me')."
+        "explanation": "They decide to go to a movie because it will rain later."
       },
       {
         "id": "17-3",
         "q": "What might the weather report say?",
         "options": [
-          "(A) It's a hot sunny day today. Leave(留下) your heavy jackets at home!",
-          "(B) There's a lot of rain all day, and it's cold. Take an umbrella with you.",
-          "(C) It's warm but windy early this morning, but there's rain later this afternoon. You will need a jacket and an umbrella then.",
-          "(D) It's cold but sunny today, a good weather for exercise. Enjoy!"
+          "(A) It's a hot sunny day today...",
+          "(B) There's a lot of rain all day...",
+          "(C) It's warm but windy early this morning, but there's rain later...",
+          "(D) It's cold but sunny today..."
         ],
         "ans": "C",
-        "explanation": "The conversation reveals it is currently warm and windy, but will be rainy later. Option (C) matches this forecast perfectly."
+        "explanation": "This option matches the description: current warm/windy weather followed by rain later."
       }
     ]
   },
   {
     "id": "set-18",
-    "title": "Reading 18: Surfing and Skiing",
-    "article": "<img src='images/q018.jpg' style='width:100%; max-width:800px; display:block; margin: 15px auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>",
+    "title": "Reading 18: Surfing vs Skiing",
+    "article": "<img src='images/q018.jpg' style='width:100%; max-width:800px; display:block; margin: 0 auto; border-radius: 8px;'>",
     "subQuestions": [
       {
         "id": "18-1",
@@ -685,7 +685,7 @@
           "(D) Gloves."
         ],
         "ans": "A",
-        "explanation": "In the chart under Skiing, item 4 lists: 'Wear warm jackets, warm gloves and snow pants.' Swimsuits are listed under Surfing. So people don't wear swimsuits for skiing."
+        "explanation": "Swimsuits are for surfing, not skiing. Skiing requires warm clothing."
       },
       {
         "id": "18-2",
@@ -697,7 +697,7 @@
           "(D) We can surf at the place with a lot of snow."
         ],
         "ans": "C",
-        "explanation": "The chart shows 'Skiboard' under the picture for Skiing. (A) is wrong because surfing was part of old Polynesian culture. (B) describes surfing weather. (D) describes skiing location."
+        "explanation": "The chart shows skiboards are used for skiing."
       },
       {
         "id": "18-3",
@@ -709,14 +709,14 @@
           "(D) They skied for hunting."
         ],
         "ans": "D",
-        "explanation": "The chart states: 'The Sami (Lapps) said they were the inventors of skiing, and they skied to hunt.'"
+        "explanation": "The text in the image mentions the Sami skied to hunt."
       }
     ]
   },
   {
     "id": "set-19",
     "title": "Reading 19: Ann and Ken",
-    "article": "<p>Ann: Hi, Ken! How was your trip to Taiwan?<br>Ken: It was great! The weather was good, so I visited a lot of beautiful places.<br>Ann: That's cool!<br>Ken: Right, I went to Yangmingshan and bought flowers for my Taiwanese friend there.<br>Ann: Really?<br>Ken: Here's a picture of my friend and me.<br>Ann: Wow! The flowers were really beautiful.<br>Ken: You can say that again.<br>Ann: Why were you in a pink T-shirt? You hate pink.<br>Ken: It was hot, but my T-shirts were heavy. My friend bought some cool T-shirts for me, and the pink T-shirt is one of them. They were my birthday gifts!<br>Ann: How nice!<br>Ken: Did you get my postcard from Taiwan?<br>Ann: Yes, I got it last week.</p>",
+    "article": "<p><strong>Ann:</strong> Hi, Ken! How was your trip to Taiwan?<br><strong>Ken:</strong> It was great! The weather was good, so I visited a lot of beautiful places.<br><strong>Ann:</strong> That's cool!<br><strong>Ken:</strong> Right, I went to Yangmingshan and bought flowers for my Taiwanese friend there.<br><strong>Ann:</strong> Really?<br><strong>Ken:</strong> Here's a picture of my friend and me.<br><strong>Ann:</strong> Wow! The flowers were really beautiful.<br><strong>Ken:</strong> You can say that again.<br><strong>Ann:</strong> Why were you in a pink T-shirt? You hate pink.<br><strong>Ken:</strong> It was hot, but my T-shirts were heavy. My friend bought some cool T-shirts for me, and the pink T-shirt is one of them. They were my birthday gifts!<br><strong>Ann:</strong> How nice!<br><strong>Ken:</strong> Did you get my postcard from Taiwan?<br><strong>Ann:</strong> Yes, I got it last week.</p>",
     "subQuestions": [
       {
         "id": "19-1",
@@ -728,7 +728,7 @@
           "(D) A postcard."
         ],
         "ans": "B",
-        "explanation": "Ken says: 'My friend bought some cool T-shirts for me... They were my birthday gifts!'"
+        "explanation": "Ken says, 'My friend bought some cool T-shirts for me... They were my birthday gifts!'"
       },
       {
         "id": "19-2",
@@ -740,26 +740,26 @@
           "(D) Ann got a postcard from Ken."
         ],
         "ans": "D",
-        "explanation": "Ken asks: 'Did you get my postcard...?' Ann answers: 'Yes, I got it last week.' So (D) is right."
+        "explanation": "Ken asks if Ann got his postcard, and she confirms she did."
       },
       {
         "id": "19-3",
-        "q": "Which might be the conversation(對話) between Ken and his Taiwanese friend?",
+        "q": "Which might be the conversation between Ken and his Taiwanese friend?",
         "options": [
-          "(A) Ken: Hello, Tina. Here are some pictures for you. Happy Birthday! Tina: Thanks!",
-          "(B) Ken: It's so cold and it's rainy! Tina: Winter's not a good season for trips. We have a lot of rain and it's cold. Don't go to the mountains these days.",
-          "(C) Tina: Happy Birthday, Ken. Ken: Can I open the gift now? Tina: Sure. Ken: Wow! T-shirts. That's kind of you. Thank you!",
-          "(D) Ken: Wow! The flowers here are beautiful. Tina: Yes, they are. Here are some flowers for you! Ken: Thank you."
+          "(A) Ken: Hello, Tina. Here are some pictures...",
+          "(B) Ken: It's so cold and it's rainy!...",
+          "(C) Tina: Happy Birthday, Ken. Ken: Can I open the gift now? Tina: Sure. Ken: Wow! T-shirts...",
+          "(D) Ken: Wow! The flowers here are beautiful..."
         ],
         "ans": "C",
-        "explanation": "Ken mentions his friend gave him T-shirts as birthday gifts. Option (C) depicts this scenario where Tina (friend) gives Ken a gift, and it turns out to be T-shirts."
+        "explanation": "Since the friend bought T-shirts as a birthday gift, conversation (C) about receiving T-shirts for a birthday fits best."
       }
     ]
   },
   {
     "id": "set-20",
     "title": "Reading 20: Fruit Recipes",
-    "article": "<img src='images/q020.jpg' style='width:100%; max-width:800px; display:block; margin: 15px auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>",
+    "article": "<img src='images/q020.jpg' style='width:100%; max-width:800px; display:block; margin: 0 auto; border-radius: 8px;'>",
     "subQuestions": [
       {
         "id": "20-1",
@@ -771,7 +771,7 @@
           "(D) The recipe of pumpkins."
         ],
         "ans": "A",
-        "explanation": "Checking the recipes: Strawberries (chocolate) - No salt. Watermelons - needs salt. Apples - needs salt. Pumpkins - needs salt. So (A) is the answer."
+        "explanation": "Looking at the recipes: Strawberry (only chocolate), others list salt."
       },
       {
         "id": "20-2",
@@ -783,19 +783,19 @@
           "(D) We can also put watermelon pieces on the apple pizza."
         ],
         "ans": "A",
-        "explanation": "The introduction says 'Taiwan is famous for its yummy fruits.' (B) is wrong (pumpkins need pepper). (C) is wrong (strawberries need chocolate, not added sugar explicitly mentioned). (D) is not mentioned. So (A) is correct."
+        "explanation": "The text intro mentions Taiwan is famous for yummy fruits."
       },
       {
         "id": "20-3",
         "q": "Which one had the apple pizza?",
         "options": [
-          "(A) Peter: Wow! It was so sweet and cool. I want to have it on every hot summer day!",
-          "(B) Judy: My friend and I had them together. We put so many in the pot. It was really fun.",
-          "(C) Lisa: I baked some for my salad. The salad was yummy and beautiful with them.",
-          "(D) Owen: This recipe is easy. My wife and I really enjoyed a pizza like this as our afternoon tea."
+          "(A) Peter: Wow! It was so sweet...",
+          "(B) Judy: My friend and I had them together...",
+          "(C) Lisa: I baked some for my salad...",
+          "(D) Owen: This recipe is easy. My wife and I really enjoyed a pizza like this..."
         ],
         "ans": "D",
-        "explanation": "The 'Apples in fall' recipe is for making an 'apple pizza'. Owen explicitly mentions enjoying 'a pizza like this', which directly links to the apple recipe."
+        "explanation": "Owen mentions 'enjoyed a pizza like this', linking to the Apple Pizza recipe."
       }
     ]
   }
