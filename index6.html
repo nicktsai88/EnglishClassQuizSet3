@@ -296,7 +296,7 @@
 
         /* Floating Next Button */
         #next-btn {
-            position: absolute; /* 修改：從 fixed 改為 absolute，避免被 iPad 底部系統列遮擋 */
+            position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 100;
@@ -312,7 +312,6 @@
             font-size: 1.2em;
             font-weight: bold;
             display: none; /* Initially hidden */
-            touch-action: manipulation; /* 新增：優化觸控裝置的點擊反應 */
         }
         #next-btn:hover { background: #0d47a1; transform: translateY(-2px); }
 
