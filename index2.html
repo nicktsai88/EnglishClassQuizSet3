@@ -181,17 +181,10 @@
 
         .article-section {
             width: 100%; /* Full width */
-            padding: 20px;
+            padding: 30px;
             background: #fafafa;
-            border-bottom: 2px solid #ccc; /* Stronger separation */
-            
-            /* Sticky Positioning Magic */
-            position: sticky;
-            top: var(--header-height); /* Sticks below the header */
-            z-index: 9000; /* Below header (10000) but above content */
-            max-height: 50vh; /* Max 50% of viewport height */
-            overflow-y: auto; /* Scrollable if content is long */
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #eee; /* Bottom border */
+            height: auto; 
         }
 
         .questions-section {
@@ -308,12 +301,8 @@
             #ai-chat-window { width: 90%; right: 5%; bottom: 80px; height: 50vh; }
 
             /* Reading Mode Mobile */
-            /* Adjusted Sticky Header for Mobile */
-            .article-section { 
-                border-bottom: 2px solid #ccc;
-                top: 60px; /* Adjust for smaller header height */
-                max-height: 40vh; /* Smaller max height on mobile */
-            }
+            /* Removed flex-direction change here since it's now default */
+            .article-section { border-bottom: 1px solid #eee; }
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
