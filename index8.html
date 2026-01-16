@@ -52,56 +52,23 @@
             justify-content: space-between; padding: 0 15px; box-sizing: border-box;
             z-index: 10000;
         }
-        .player-left { flex: 0 0 auto; display: flex; justify-content: flex-start; margin-right: 15px; }
-        .player-center { 
-            flex: 1; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            overflow: hidden;
-            margin: 0 10px;
-        }
-        .player-right { flex: 0 0 auto; display: flex; justify-content: flex-end; }
-        
+        .player-left { flex: 1; display: flex; justify-content: flex-start; }
+        .player-right { flex: 1; display: flex; justify-content: flex-end; }
         .player-icon { font-size: 1.5em; background: #e3f2fd; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid var(--primary-color); color: var(--primary-color);}
 
-        /* Song Title Styles */
-        .song-info-container {
-            width: 100%;
-            max-width: 300px;
-            background: #f1f8e9;
-            border-radius: 20px;
-            padding: 5px 15px;
-            margin-bottom: 5px;
-            border: 1px solid #c5e1a5;
-            text-align: center;
-            white-space: nowrap;
-            overflow: hidden;
-            position: relative;
+        #yt-wrapper {
+            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+            width: 144px; height: 81px; background: #000; border: 2px solid var(--text-color);
+            border-radius: 4px; overflow: hidden; transition: all 0.3s ease; z-index: 5;
         }
-        .song-title {
-            font-size: 0.9em;
-            color: #33691e;
-            font-weight: bold;
-            display: inline-block;
-        }
-        /* Marquee effect for long titles */
-        .scrolling-text {
-            animation: marquee 10s linear infinite;
-            padding-left: 100%;
-        }
-        @keyframes marquee {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-100%, 0); }
-        }
+        .yt-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; z-index: 20; }
+        #yt-wrapper.video-hidden { width: 0; height: 0; border: none; opacity: 0; }
         
         .player-controls { display: flex; align-items: center; gap: 8px; }
-        .ctrl-btn { background: none; border: none; cursor: pointer; color: #78909c; font-size: 1.4em; padding: 5px; transition: color 0.2s;}
-        .ctrl-btn:hover, .ctrl-btn.active { color: var(--primary-color); transform: scale(1.1); }
-        .volume-container { display: flex; align-items: center; gap: 5px; margin-left: 5px;}
+        .ctrl-btn { background: none; border: none; cursor: pointer; color: #78909c; font-size: 1.4em; padding: 5px; }
+        .ctrl-btn:hover, .ctrl-btn.active { color: var(--primary-color); }
+        .volume-container { display: flex; align-items: center; gap: 5px; }
         .volume-slider { width: 60px; accent-color: var(--primary-color); cursor: pointer;}
-        
         .mode-btn { border: 1px solid #bdc3c7; background: #fff; padding: 5px 10px; border-radius: 20px; font-size: 0.8em; cursor: pointer; display: flex; align-items: center; gap: 5px;}
         .mode-btn:hover { border-color: var(--primary-color); color: var(--primary-color); }
 
@@ -333,7 +300,7 @@
         .sub-q-text { font-size: 1.25em; font-weight: bold; margin-bottom: 15px; color: #2c3e50; }
         
         .option-list { list-style: none; padding: 0; }
-        .option-btn { width: 100%; padding: 15px; margin-bottom: 10px; background: #fff; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; font-size: 1.35em; text-align: left; transition: 0.2s; position: relative; }
+        .option-btn { width: 100%; padding: 15px; margin-bottom: 10px; background: #fff; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; font-size: 1.15em; text-align: left; transition: 0.2s; position: relative; }
         .option-btn:hover:not(:disabled) { border-color: var(--primary-color); background: #e3f2fd; }
         .option-btn.selected { border-color: var(--primary-color); background: #e3f2fd; font-weight: bold; }
         .option-btn.correct { background: #d4edda; border-color: var(--correct-color); color: #155724; }
@@ -351,7 +318,7 @@
             margin-top: 15px; 
             display: none; 
             line-height: 1.6; 
-            font-size: 1.35em; 
+            font-size: 1.1em; 
             color: #3e2723;
             animation: fadeIn 0.5s;
         }
@@ -444,10 +411,6 @@
             }
             body { padding-top: 70px; } /* Adjust for header */
             #music-player-bar { height: 60px; padding: 0 10px; }
-            .song-info-container { max-width: 150px; font-size: 0.8em;}
-            .player-center { margin: 0 5px; }
-            .ctrl-btn { font-size: 1.2em; padding: 3px; }
-            .volume-slider { width: 40px; }
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
@@ -456,32 +419,35 @@
 </head>
 <body>
 
-    <!-- Music Player (HTML5 Audio) -->
+    <!-- Music Player -->
     <div id="music-player-bar">
         <div class="player-left">
             <div class="player-icon">🎵</div>
         </div>
         
-        <div class="player-center">
-            <div class="song-info-container">
-                <span id="song-title-display" class="song-title">Loading Music...</span>
-            </div>
-            <div class="player-controls">
-                <button class="ctrl-btn" onclick="audioPlayer.prev()" title="Previous">⏮</button>
-                <button id="main-play-btn" class="ctrl-btn" onclick="audioPlayer.toggle()" title="Play/Pause">▶</button>
-                <button class="ctrl-btn" onclick="audioPlayer.next()" title="Next (Random)">⏭</button>
-                
-                <div class="volume-container">
-                    <span style="font-size:0.8em; color:var(--primary-color);">🔊</span>
-                    <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.1" value="0.3" oninput="audioPlayer.setVolume(this.value)">
-                </div>
-            </div>
+        <div id="yt-wrapper">
+            <div id="yt-player"></div>
+            <div class="yt-overlay"></div>
         </div>
         
         <div class="player-right">
             <div class="player-controls">
+                <button class="ctrl-btn" onclick="prevTrack()">⏮</button>
+                <button id="main-play-btn" class="ctrl-btn" onclick="togglePlay()">▶</button>
+                <button class="ctrl-btn" onclick="nextTrack()">⏭</button>
+                
+                <div class="volume-container">
+                    <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="30" oninput="setVolume(this.value)">
+                </div>
+
+                <button id="toggle-video-btn" class="ctrl-btn active" onclick="toggleVideoDisplay()">👁️</button>
+                
                 <!-- AI Button -->
                 <button id="ai-btn" class="ctrl-btn" onclick="toggleChatWindow()" title="AI Tutor">🤖</button>
+
+                <button id="mode-btn" class="mode-btn" onclick="changeMode()">
+                    <span id="mode-icon">🔁</span>
+                </button>
             </div>
         </div>
     </div>
@@ -631,15 +597,9 @@
         </div>
     </div>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        // --- 1. SETTINGS & CONFIGURATION ---
-        // MODIFY THIS SECTION FOR GITHUB MUSIC FETCH
-        const MUSIC_CONFIG = {
-            username: 'your-github-username', // CHANGE THIS
-            repo: 'your-repo-name',           // CHANGE THIS
-            folder: 'Music'                   // CHANGE THIS (Leave empty '' if in root)
-        };
-
+        // AI Configuration
         const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=";
 
         // Configuration and Globals
@@ -650,10 +610,16 @@
         }
         LEVEL_CONFIG.push(4); // Level 30
 
+        const YOUTUBE_PLAYLIST = ['iLAS0vy7-78', '5zeyr-_G_4w', 'aZXJATkkDoA', 'UKbZ4r88z3Q', 'aGZk0nEBWv4', 'advioIb8-gE'];
+        // LocalStorage Prefix - Changed for English Quiz
         const APP_PREFIX = 'EnglishQuizSet3-1_';
         
+        let player, isPlayerReady = false, isPlaying = false;
         let allQuestions = [], currentQuizData = [];
         let userName = "", currentAvatar = "Chris.png";
+        
+        // Video index tracking (Random start)
+        let currentVideoIdx = Math.floor(Math.random() * YOUTUBE_PLAYLIST.length);
         
         // Quiz State
         let quizState = {
@@ -669,140 +635,6 @@
 
         const audioCorrect = new Audio('sounds/correct.mp3'); audioCorrect.volume = 0.4;
         const audioFail = new Audio('sounds/fail.mp3'); audioFail.volume = 0.4;
-
-        // --- 2. HTML5 AUDIO PLAYER LOGIC ---
-        const audioPlayer = {
-            element: new Audio(),
-            playlist: [],
-            currentIndex: 0,
-            isPlaying: false,
-
-            init: function() {
-                this.element.volume = 0.3;
-                this.element.onended = () => this.next();
-                this.element.onerror = () => {
-                    console.error("Audio Error, skipping track");
-                    this.next();
-                };
-                this.fetchPlaylist();
-            },
-
-            fetchPlaylist: async function() {
-                const titleDisplay = document.getElementById('song-title-display');
-                try {
-                    titleDisplay.innerText = "Fetching Music...";
-                    const path = MUSIC_CONFIG.folder ? `/${MUSIC_CONFIG.folder}` : '';
-                    const url = `https://api.github.com/repos/${MUSIC_CONFIG.username}/${MUSIC_CONFIG.repo}/contents${path}`;
-                    
-                    const response = await fetch(url);
-                    if (!response.ok) throw new Error("GitHub API Failed");
-                    
-                    const data = await response.json();
-                    
-                    // Filter for .mp3 files
-                    this.playlist = data
-                        .filter(file => file.name.toLowerCase().endsWith('.mp3'))
-                        .map(file => ({
-                            name: file.name.replace(/\.mp3$/i, '').replace(/_/g, ' '),
-                            src: file.download_url
-                        }));
-
-                    if (this.playlist.length === 0) {
-                        titleDisplay.innerText = "No MP3s found";
-                        return;
-                    }
-
-                    // Shuffle
-                    this.shufflePlaylist();
-                    
-                    // Set initial track but don't play yet
-                    this.currentIndex = 0;
-                    this.loadTrack(0);
-                    titleDisplay.innerText = "Ready to Play 🎵";
-
-                } catch (error) {
-                    console.error("Music Load Error:", error);
-                    titleDisplay.innerText = "Music Load Failed";
-                }
-            },
-
-            shufflePlaylist: function() {
-                for (let i = this.playlist.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [this.playlist[i], this.playlist[j]] = [this.playlist[j], this.playlist[i]];
-                }
-            },
-
-            loadTrack: function(index) {
-                if (this.playlist.length === 0) return;
-                const track = this.playlist[index];
-                this.element.src = track.src;
-                
-                // Update UI
-                const titleEl = document.getElementById('song-title-display');
-                titleEl.innerText = track.name;
-                
-                // Marquee effect logic
-                if (track.name.length > 20) {
-                    titleEl.classList.add('scrolling-text');
-                } else {
-                    titleEl.classList.remove('scrolling-text');
-                }
-            },
-
-            play: function() {
-                if (this.playlist.length === 0) return;
-                
-                const playPromise = this.element.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        this.isPlaying = true;
-                        this.updateBtnUI();
-                    }).catch(error => {
-                        console.log("Autoplay prevented or error:", error);
-                        this.isPlaying = false;
-                        this.updateBtnUI();
-                    });
-                }
-            },
-
-            pause: function() {
-                this.element.pause();
-                this.isPlaying = false;
-                this.updateBtnUI();
-            },
-
-            toggle: function() {
-                if (this.isPlaying) this.pause();
-                else this.play();
-            },
-
-            next: function() {
-                if (this.playlist.length === 0) return;
-                this.currentIndex = (this.currentIndex + 1) % this.playlist.length;
-                this.loadTrack(this.currentIndex);
-                this.play();
-            },
-
-            prev: function() {
-                if (this.playlist.length === 0) return;
-                this.currentIndex = (this.currentIndex - 1 + this.playlist.length) % this.playlist.length;
-                this.loadTrack(this.currentIndex);
-                this.play();
-            },
-
-            setVolume: function(val) {
-                this.element.volume = val;
-            },
-
-            updateBtnUI: function() {
-                document.getElementById('main-play-btn').innerText = this.isPlaying ? '⏸' : '▶';
-            }
-        };
-
-        // Initialize Audio Logic
-        audioPlayer.init();
-
 
         // --- Initialization ---
         fetch('questions.json').then(res => res.json())
@@ -823,10 +655,7 @@
             if(!name) return alert('Please enter a name');
             userName = name;
             saveUser();
-            
-            // Trigger Audio Play on user interaction
-            audioPlayer.play();
-            
+            if(isPlayerReady && !isPlaying) player.playVideo();
             goToDashboard();
         }
 
@@ -1344,6 +1173,17 @@
             `).join('') || '<p style="text-align:center">No records</p>';
         }
 
+        function showCollection() {
+            // Collection feature not active in this simplified version
+        }
+
+        function openCardModal(src, title) {
+            document.getElementById('modal-img').src = src;
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('card-modal').style.display = 'flex';
+        }
+        function closeCardModal() { document.getElementById('card-modal').style.display = 'none'; }
+        
         function logout() { location.reload(); }
         function exitQuiz() { 
             // Auto-saved, just exit
@@ -1449,6 +1289,62 @@
             
             msgArea.scrollTop = msgArea.scrollHeight;
         }
+
+        // --- YouTube & Audio ---
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player', {
+                height: '100%', width: '100%',
+                videoId: YOUTUBE_PLAYLIST[currentVideoIdx],
+                playerVars: { 'playsinline': 1, 'controls': 0, 'disablekb': 1, 'fs': 0, 'rel': 0 },
+                events: { 'onReady': onPlayerReady, 'onStateChange': onPlayerStateChange }
+            });
+        }
+        function onPlayerReady() { isPlayerReady = true; player.setVolume(30); }
+        function onPlayerStateChange(e) { 
+            isPlaying = (e.data == YT.PlayerState.PLAYING);
+            document.getElementById('main-play-btn').innerText = isPlaying ? '⏸' : '▶';
+            if(e.data == YT.PlayerState.ENDED) {
+                playRandomTrack(); 
+            }
+        }
+        function togglePlay() { if(isPlayerReady) isPlaying ? player.pauseVideo() : player.playVideo(); }
+        
+        function prevTrack() { 
+            if(isPlayerReady) {
+                currentVideoIdx = (currentVideoIdx - 1 + YOUTUBE_PLAYLIST.length) % YOUTUBE_PLAYLIST.length;
+                player.loadVideoById(YOUTUBE_PLAYLIST[currentVideoIdx]);
+            }
+        }
+        function nextTrack() { 
+            if(isPlayerReady) {
+                currentVideoIdx = (currentVideoIdx + 1) % YOUTUBE_PLAYLIST.length;
+                player.loadVideoById(YOUTUBE_PLAYLIST[currentVideoIdx]);
+            }
+        } 
+        
+        function playRandomTrack() {
+             if(isPlayerReady) {
+                let newIdx;
+                do {
+                    newIdx = Math.floor(Math.random() * YOUTUBE_PLAYLIST.length);
+                } while (newIdx === currentVideoIdx && YOUTUBE_PLAYLIST.length > 1);
+                
+                currentVideoIdx = newIdx;
+                player.loadVideoById(YOUTUBE_PLAYLIST[currentVideoIdx]);
+            }
+        }
+
+        function setVolume(v) { if(isPlayerReady) player.setVolume(v); }
+        function toggleVideoDisplay() {
+            const wrap = document.getElementById('yt-wrapper');
+            const btn = document.getElementById('toggle-video-btn');
+            if(window.innerWidth <= 768) wrap.classList.toggle('mobile-visible');
+            else wrap.classList.toggle('video-hidden');
+            const hidden = wrap.classList.contains('video-hidden') && !wrap.classList.contains('mobile-visible');
+            btn.classList.toggle('active', !hidden);
+        }
+        function changeMode() { /* Loop handled by simple restart for now */ }
+
     </script>
 </body>
 </html>
