@@ -432,26 +432,9 @@
 
         /* Firebase Status Indicator */
         #firebase-status {
-            font-size: 0.8em; 
-            background: rgba(255,255,255,0.9);
-            padding: 4px 10px; 
-            border-radius: 12px; 
-            margin-right: 10px; 
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            font-size: 0.8em; color: var(--primary-color); background: rgba(255,255,255,0.8);
+            padding: 2px 8px; border-radius: 10px; margin-right: 10px; font-weight: bold;
         }
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-        .status-dot.green { background-color: #4caf50; box-shadow: 0 0 4px #4caf50; }
-        .status-dot.red { background-color: #f44336; box-shadow: 0 0 4px #f44336; }
-        .status-dot.yellow { background-color: #ff9800; }
 
         /* RWD */
         @media (max-width: 768px) {
@@ -518,7 +501,7 @@
         </div>
         
         <div class="player-right">
-            <span id="firebase-status"><span class="status-dot yellow"></span>讀取資料中...</span>
+            <span id="firebase-status">☁️ Connecting...</span>
             <div class="player-controls">
                 <!-- AI Button -->
                 <button id="ai-btn" class="ctrl-btn" onclick="toggleChatWindow()" title="AI Tutor">🤖</button>
@@ -687,7 +670,6 @@
   appId: "1:76289812052:web:898384a916f9f341f62fc1"
 };
 
-
         // --- EXTRACTED COLLECTION NAME ---
         // Originally: const APP_PREFIX = 'EnglishQuizSet3-1_';
         const COLLECTION_NAME = 'EnglishQuizSet3-1';
@@ -717,30 +699,24 @@
             signInAnonymously(auth).then(() => {
                 console.log("Firebase: Signed in anonymously");
                 isFirebaseReady = true;
-                updateConnectionStatus("已同步", "success");
+                updateConnectionStatus("☁️ Synced");
                 
                 // Start listening to Global Users List immediately
                 listenToGlobalUsers();
             }).catch((error) => {
                 console.error("Firebase Auth Error:", error);
-                updateConnectionStatus("雲端同步失敗", "error");
+                updateConnectionStatus("⚠️ Offline Mode");
                 // Fallback to localStorage logic could go here, but for now we warn
             });
 
         } catch (e) {
             console.error("Firebase Init Failed (Check Config):", e);
-            updateConnectionStatus("設定錯誤", "error");
+            updateConnectionStatus("❌ Config Error");
         }
 
-        function updateConnectionStatus(msg, type) {
+        function updateConnectionStatus(msg) {
             const statusEl = document.getElementById('firebase-status');
-            if(statusEl) {
-                let dotClass = 'yellow';
-                if(type === 'success') dotClass = 'green';
-                if(type === 'error') dotClass = 'red';
-                
-                statusEl.innerHTML = `<span class="status-dot ${dotClass}"></span>${msg}`;
-            }
+            if(statusEl) statusEl.innerText = msg;
         }
 
         // --- 1. SETTINGS & CONFIGURATION ---
@@ -1009,13 +985,10 @@
         }
         
         function renderQuickLogin(users) {
+            // users comes from snapshot
             const container = document.getElementById('quick-login-area');
+            // Filter unique names just in case
             const uniqueUsers = users.filter((v,i,a)=>a.findIndex(v2=>(v2.name===v.name))===i);
-
-            if (uniqueUsers.length === 0) {
-                container.innerHTML = '<div style="width:100%;text-align:center;color:#888;margin:20px 0;font-size:1.1em;">尚無挑戰者紀錄，歡迎加入！</div>';
-                return;
-            }
 
             container.innerHTML = uniqueUsers.map(u => `
                 <div class="user-tag" onclick="quickLogin('${u.name}', '${u.avatar}')">
