@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Reading Comprehension Quiz (Firebase Edition)</title>
+    <title>English Reading Comprehension Quiz</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
@@ -18,7 +18,7 @@
             --wrong-color: #c62828;     
             --favorite-color: #ad1457;  
             --player-bg: #ffffff;
-            --header-height: 70px;      /* Modified height to 70px */
+            --header-height: 100px;
         }
 
         * { box-sizing: border-box; } /* Global Box Sizing */
@@ -53,18 +53,16 @@
             z-index: 10000;
         }
         .player-left { flex: 0 0 auto; display: flex; justify-content: flex-start; margin-right: 15px; }
-        
-        /* Updated Player Center for Horizontal Layout */
         .player-center { 
             flex: 1; 
             display: flex; 
-            flex-direction: row; /* Horizontal on desktop */
+            flex-direction: column; 
             justify-content: center; 
             align-items: center; 
             overflow: hidden;
             margin: 0 10px;
         }
-        .player-right { flex: 0 0 auto; display: flex; justify-content: flex-end; align-items: center; gap: 10px; }
+        .player-right { flex: 0 0 auto; display: flex; justify-content: flex-end; }
         
         .player-icon { font-size: 1.5em; background: #e3f2fd; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid var(--primary-color); color: var(--primary-color);}
 
@@ -75,8 +73,7 @@
             background: #f1f8e9;
             border-radius: 20px;
             padding: 5px 15px;
-            margin-bottom: 0; /* Removed bottom margin for desktop row layout */
-            margin-right: 15px; /* Add space between title and buttons */
+            margin-bottom: 5px;
             border: 1px solid #c5e1a5;
             text-align: center;
             white-space: nowrap;
@@ -91,7 +88,7 @@
         }
         /* Marquee effect for long titles */
         .scrolling-text {
-            animation: marquee 20s linear infinite; /* Slower speed (20s) */
+            animation: marquee 10s linear infinite;
             padding-left: 100%;
         }
         @keyframes marquee {
@@ -430,12 +427,6 @@
         .ai-send-btn { background: var(--primary-color); color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
         .ai-send-btn:hover { background: #0d47a1; }
 
-        /* Firebase Status Indicator */
-        #firebase-status {
-            font-size: 0.8em; color: var(--primary-color); background: rgba(255,255,255,0.8);
-            padding: 2px 8px; border-radius: 10px; margin-right: 10px; font-weight: bold;
-        }
-
         /* RWD */
         @media (max-width: 768px) {
             #level-screen-content { flex-direction: column; overflow-y: auto; height: 100%;}
@@ -453,23 +444,10 @@
             }
             body { padding-top: 70px; } /* Adjust for header */
             #music-player-bar { height: 60px; padding: 0 10px; }
-            
-            /* Responsive Adjustments for Music Player */
-            .player-center { 
-                flex-direction: column; /* Keep stacked on mobile */
-                margin: 0 5px; 
-            }
-            .song-info-container { 
-                max-width: 150px; 
-                width: 90%;
-                font-size: 0.8em;
-                margin-right: 0;
-                margin-bottom: 5px;
-            }
+            .song-info-container { max-width: 150px; font-size: 0.8em;}
+            .player-center { margin: 0 5px; }
             .ctrl-btn { font-size: 1.2em; padding: 3px; }
             .volume-slider { width: 40px; }
-            
-            #firebase-status { display: none; } /* Hide status on small mobile if crowded */
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
@@ -501,7 +479,6 @@
         </div>
         
         <div class="player-right">
-            <span id="firebase-status">☁️ Connecting...</span>
             <div class="player-controls">
                 <!-- AI Button -->
                 <button id="ai-btn" class="ctrl-btn" onclick="toggleChatWindow()" title="AI Tutor">🤖</button>
@@ -654,88 +631,26 @@
         </div>
     </div>
 
-    <script type="module">
-        // --- FIREBASE IMPORTS ---
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-        import { getFirestore, collection, doc, setDoc, updateDoc, onSnapshot, getDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
-
-        // --- 1. FIREBASE CONFIG & INIT ---
-        const firebaseConfig = {
-  apiKey: "AIzaSyAxQFt76ZPXE7d0i1XeNZ1yiiD2WYNIfHs",
-  authDomain: "chinese-learning-47f4d.firebaseapp.com",
-  projectId: "chinese-learning-47f4d",
-  storageBucket: "chinese-learning-47f4d.firebasestorage.app",
-  messagingSenderId: "76289812052",
-  appId: "1:76289812052:web:898384a916f9f341f62fc1"
-};
-
-        // --- EXTRACTED COLLECTION NAME ---
-        // Originally: const APP_PREFIX = 'EnglishQuizSet3-1_';
-        const COLLECTION_NAME = 'EnglishQuizSet3-1';
-
-        let db, auth, app;
-        let isFirebaseReady = false;
-        let currentUserDocUnsub = null;
-        let globalUsersUnsub = null;
-
-        // --- LOCAL CACHE (Mirrors what used to be in localStorage) ---
-        // This allows existing sync functions (like renderLevelGrid) to work with minimal changes
-        let localCache = {
-            quizProgress: { maxLevel: 1, scores: {} },
-            favorites: [],
-            mistakes: [],
-            history: [],
-            savedStates: {} // To store level resume data: { level_1: {...state...} }
-        };
-
-        // Initialize Firebase
-        try {
-            app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            auth = getAuth(app);
-            
-            // Anonymous Login
-            signInAnonymously(auth).then(() => {
-                console.log("Firebase: Signed in anonymously");
-                isFirebaseReady = true;
-                updateConnectionStatus("☁️ Synced");
-                
-                // Start listening to Global Users List immediately
-                listenToGlobalUsers();
-            }).catch((error) => {
-                console.error("Firebase Auth Error:", error);
-                updateConnectionStatus("⚠️ Offline Mode");
-                // Fallback to localStorage logic could go here, but for now we warn
-            });
-
-        } catch (e) {
-            console.error("Firebase Init Failed (Check Config):", e);
-            updateConnectionStatus("❌ Config Error");
-        }
-
-        function updateConnectionStatus(msg) {
-            const statusEl = document.getElementById('firebase-status');
-            if(statusEl) statusEl.innerText = msg;
-        }
-
+    <script>
         // --- 1. SETTINGS & CONFIGURATION ---
-        const MUSIC_CONFIG =  {
-            username: 'nicktsai88',
-            repo: 'Music',
-            folder: '' // 若在根目錄請留空，例如: ''
+        // MODIFY THIS SECTION FOR GITHUB MUSIC FETCH
+        const MUSIC_CONFIG = {
+            username: 'nicktsai88', // CHANGE THIS
+            repo: 'Music',           // CHANGE THIS
+            folder: ''                   // CHANGE THIS (Leave empty '' if in root)
         };
 
         const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=";
 
         // Configuration and Globals
+        // 30 Levels: 1-29 have 5 questions, Level 30 has 4 questions. Total 149.
         const LEVEL_CONFIG = [];
         for (let i = 0; i < 29; i++) {
             LEVEL_CONFIG.push(5);
         }
         LEVEL_CONFIG.push(4); // Level 30
 
-        const APP_PREFIX = 'EnglishQuizSet3-1_'; // Kept for legacy key generation if needed (e.g. Gemini key)
+        const APP_PREFIX = 'EnglishQuizSet3-1_';
         
         let allQuestions = [], currentQuizData = [];
         let userName = "", currentAvatar = "Chris.png";
@@ -888,82 +803,26 @@
         // Initialize Audio Logic
         audioPlayer.init();
 
+
         // --- Initialization ---
         fetch('questions.json').then(res => res.json())
-            .then(data => { 
-                allQuestions = data; 
-                // renderQuickLogin is called after Firebase listener is active
-            })
+            .then(data => { allQuestions = data; renderQuickLogin(); })
             .catch(e => console.error("Error loading questions:", e));
 
-        // --- FIREBASE DATA LOGIC ---
-
-        // Listen to global users list
-        function listenToGlobalUsers() {
-            if(!isFirebaseReady) return;
-            const globalRef = doc(db, COLLECTION_NAME, 'global_users');
-            
-            globalUsersUnsub = onSnapshot(globalRef, (docSnap) => {
-                if (docSnap.exists()) {
-                    const data = docSnap.data();
-                    renderQuickLogin(data.users || []);
-                } else {
-                    renderQuickLogin([]);
-                }
-            });
-        }
-
-        // Listen to current user data
-        function listenToUserData() {
-            if(!isFirebaseReady || !userName) return;
-            const userRef = doc(db, COLLECTION_NAME, userName);
-
-            if(currentUserDocUnsub) currentUserDocUnsub(); // Unsubscribe prev if any
-
-            currentUserDocUnsub = onSnapshot(userRef, (docSnap) => {
-                if (docSnap.exists()) {
-                    const data = docSnap.data();
-                    // Merge into localCache
-                    localCache.quizProgress = data.quizProgress || { maxLevel: 1, scores: {} };
-                    localCache.favorites = data.favorites || [];
-                    localCache.mistakes = data.mistakes || [];
-                    localCache.history = data.history || [];
-                    localCache.savedStates = data.savedStates || {};
-                    
-                    // If dashboard is visible, refresh it
-                    if(document.getElementById('level-screen').style.display === 'block') {
-                        renderLevelGrid();
-                    }
-                    if(document.getElementById('favorites-screen').style.display === 'block') {
-                        showFavorites();
-                    }
-                    if(document.getElementById('mistakes-screen').style.display === 'block') {
-                        showMistakes();
-                    }
-                }
-            });
-        }
+        function getUserKey(key) { return APP_PREFIX + userName + '_' + key; }
 
         // --- Login & Navigation ---
-        window.selectAvatar = function(img, el) {
+        function selectAvatar(img, el) {
             currentAvatar = img;
             document.querySelectorAll('.avatar-option').forEach(e => e.classList.remove('selected'));
             el.classList.add('selected');
         }
 
-        window.loginAndStart = async function() {
+        function loginAndStart() {
             const name = document.getElementById('username').value.trim();
             if(!name) return alert('Please enter a name');
             userName = name;
-
-            // Wait for firebase connection if not ready?
-            if(!isFirebaseReady) {
-               alert("Connecting to server, please wait...");
-               return;
-            }
-
-            await saveUserGlobal(); // Add to global list if new
-            listenToUserData();     // Start syncing user specific data
+            saveUser();
             
             // Trigger Audio Play on user interaction
             audioPlayer.play();
@@ -971,26 +830,18 @@
             goToDashboard();
         }
 
-        async function saveUserGlobal() {
-            if(!isFirebaseReady) return;
-            const globalRef = doc(db, COLLECTION_NAME, 'global_users');
-            // Use arrayUnion to add user to list
-            try {
-                await setDoc(globalRef, {
-                    users: arrayUnion({ name: userName, avatar: currentAvatar })
-                }, { merge: true });
-            } catch(e) {
-                console.error("Save Global User Error", e);
+        function saveUser() {
+            let users = JSON.parse(localStorage.getItem(APP_PREFIX+'savedUsers')) || [];
+            if(!users.some(u => u.name === userName)) {
+                users.push({name: userName, avatar: currentAvatar});
+                localStorage.setItem(APP_PREFIX+'savedUsers', JSON.stringify(users));
             }
         }
         
-        function renderQuickLogin(users) {
-            // users comes from snapshot
+        function renderQuickLogin() {
+            const users = JSON.parse(localStorage.getItem(APP_PREFIX+'savedUsers')) || [];
             const container = document.getElementById('quick-login-area');
-            // Filter unique names just in case
-            const uniqueUsers = users.filter((v,i,a)=>a.findIndex(v2=>(v2.name===v.name))===i);
-
-            container.innerHTML = uniqueUsers.map(u => `
+            container.innerHTML = users.map(u => `
                 <div class="user-tag" onclick="quickLogin('${u.name}', '${u.avatar}')">
                     <img src="images/${u.avatar}" style="width:20px;height:20px;border-radius:50%;">${u.name}
                     <span class="delete-user" onclick="event.stopPropagation();deleteUser('${u.name}')">×</span>
@@ -998,48 +849,27 @@
             `).join('');
         }
 
-        window.quickLogin = function(name, av) {
+        function quickLogin(name, av) {
             document.getElementById('username').value = name;
             currentAvatar = av;
             loginAndStart();
         }
 
-        window.deleteUser = async function(name) {
+        function deleteUser(name) {
             if(!confirm(`Delete data for ${name}?`)) return;
             
-            if(!isFirebaseReady) return alert("Offline cannot delete");
-
-            try {
-                // 1. Remove from global list (Need avatar to match object exactly, but we only have name here easily)
-                // We'll fetch the list first to find the object
-                const globalRef = doc(db, COLLECTION_NAME, 'global_users');
-                const docSnap = await getDoc(globalRef);
-                if(docSnap.exists()) {
-                    const users = docSnap.data().users || [];
-                    const userObj = users.find(u => u.name === name);
-                    if(userObj) {
-                        await updateDoc(globalRef, {
-                            users: arrayRemove(userObj)
-                        });
-                    }
-                }
-
-                // 2. Delete user document is not supported by standard client SDK deleteDoc easily if we want to keep it simple, 
-                // but we can just empty it or set a flag. 
-                // Actually, let's just delete the doc reference.
-                // Note: Standard SDK requires deleting collections? No, just the doc.
-                // However, importing deleteDoc was not in my top imports.
-                // Let's just remove from the list for the UI.
-                
-                // If you strictly want to delete data:
-                // await deleteDoc(doc(db, COLLECTION_NAME, name)); 
-
-            } catch(e) {
-                console.error("Delete failed", e);
-            }
+            // Clear user data
+            const prefix = APP_PREFIX + name;
+            Object.keys(localStorage).forEach(key => {
+                if(key.startsWith(prefix)) localStorage.removeItem(key);
+            });
+            
+            let users = JSON.parse(localStorage.getItem(APP_PREFIX+'savedUsers')) || [];
+            localStorage.setItem(APP_PREFIX+'savedUsers', JSON.stringify(users.filter(u => u.name !== name)));
+            renderQuickLogin();
         }
 
-        window.goToDashboard = function() {
+        function goToDashboard() {
             hideAllScreens();
             document.getElementById('level-screen').style.display = 'block';
             document.getElementById('display-name').innerText = userName;
@@ -1058,9 +888,12 @@
             if(!grid) return console.error("Level grid element not found!");
             
             grid.innerHTML = "";
-            
-            // READ FROM LOCAL CACHE (Populated by Firestore Snapshot)
-            let progress = localCache.quizProgress;
+            let progress;
+            try {
+                progress = JSON.parse(localStorage.getItem(getUserKey('quizProgress'))) || { maxLevel: 1, scores: {} };
+            } catch(e) {
+                progress = { maxLevel: 1, scores: {} };
+            }
             
             if(!progress.scores) progress.scores = {};
             if(!progress.maxLevel) progress.maxLevel = 1;
@@ -1084,8 +917,9 @@
                         else icon = '🥉';
                     }
                     
-                    // Check for saved progress in localCache
-                    const hasSaved = localCache.savedStates && localCache.savedStates['level_'+level];
+                    // Check for saved progress
+                    const savedKey = getUserKey('progress_level_' + level);
+                    const hasSaved = localStorage.getItem(savedKey);
                     const resumeText = hasSaved ? '<div style="font-size:0.8em;color:#e65100;">(Resume)</div>' : '';
 
                     btn.innerHTML = `<div class="lvl-icon">${icon}</div><div class="lvl-label">Level ${level}</div>${score !== undefined ? `<div class="lvl-score">${score}pts</div>` : ''}${resumeText}`;
@@ -1108,12 +942,13 @@
             // Load questions
             currentQuizData = allQuestions.slice(startIdx, endIdx);
             
-            // Check save state from localCache
-            const savedState = localCache.savedStates ? localCache.savedStates['level_'+level] : null;
+            // Check save state
+            const saveKey = getUserKey('progress_level_' + level);
+            const savedState = localStorage.getItem(saveKey);
 
             if (savedState) {
                 // Resume
-                quizState = savedState;
+                quizState = JSON.parse(savedState);
                 quizState.mode = 'level';
                 // Recalculate total subquestions to be safe
                 let total = 0;
@@ -1157,21 +992,11 @@
             loadQuizUI();
         }
 
-        async function saveQuizProgress() {
+        function saveQuizProgress() {
             // Only save in level mode
             if(quizState.mode === 'level') {
-                if(!isFirebaseReady || !userName) return;
-                
-                // Update specific field using dot notation for the map
-                const fieldPath = `savedStates.level_${quizState.level}`;
-                
-                try {
-                    await updateDoc(doc(db, COLLECTION_NAME, userName), {
-                        [fieldPath]: quizState
-                    });
-                } catch(e) {
-                    console.error("Save progress failed", e);
-                }
+                const saveKey = getUserKey('progress_level_' + quizState.level);
+                localStorage.setItem(saveKey, JSON.stringify(quizState));
             }
         }
 
@@ -1289,7 +1114,7 @@
             }
         }
 
-        window.handleAnswerImmediate = function(qGroupId, subQId, selectedValue, btnElement, correctAns, explanationText) {
+        function handleAnswerImmediate(qGroupId, subQId, selectedValue, btnElement, correctAns, explanationText) {
             const allBtns = document.querySelectorAll(`.opt-btn-${subQId}`);
             allBtns.forEach(b => b.disabled = true);
 
@@ -1343,7 +1168,7 @@
             }
         }
 
-        window.nextQuestion = function() {
+        function nextQuestion() {
             quizState.currentIndex++;
             quizState.pageAnsweredCount = 0;
             quizState.pageState = {}; 
@@ -1356,17 +1181,9 @@
             document.querySelector('.article-section').scrollTop = 0;
         }
 
-        async function finishQuiz() {
+        function finishQuiz() {
             if(quizState.mode === 'level') {
-                // Remove progress for this level upon completion
-                if(isFirebaseReady && userName) {
-                     const fieldPath = `savedStates.level_${quizState.level}`;
-                     try {
-                         // We can set it to null or use FieldValue.delete() but direct update to empty obj is easier
-                         // Using update with dot notation to nullify or delete
-                         // For simplicity in this structure, we just update the progress below and the state stays 'complete' or we can ignore it
-                     } catch(e){}
-                }
+                localStorage.removeItem(getUserKey('progress_level_' + quizState.level));
             }
 
             document.getElementById('quiz-content').style.display = 'none';
@@ -1377,31 +1194,20 @@
             document.getElementById('final-name').innerText = userName;
             
             if(quizState.mode === 'level') {
-                let progress = localCache.quizProgress || { maxLevel: 1, scores: {} };
+                let progress = JSON.parse(localStorage.getItem(getUserKey('quizProgress'))) || { maxLevel: 1, scores: {} };
                 
                 // Update score
                 let oldScore = progress.scores[quizState.level] || 0;
-                let newScores = { ...progress.scores };
-                
-                if(finalScore > oldScore) newScores[quizState.level] = finalScore;
-                else if (!newScores[quizState.level]) newScores[quizState.level] = finalScore; 
+                if(finalScore > oldScore) progress.scores[quizState.level] = finalScore;
+                else if (!progress.scores[quizState.level]) progress.scores[quizState.level] = finalScore; 
                 
                 // Unlock next level
                 let unlocked = false;
-                let newMaxLevel = progress.maxLevel;
                 if(quizState.level === progress.maxLevel && quizState.level < LEVEL_CONFIG.length) {
-                    newMaxLevel++;
+                    progress.maxLevel++;
                     unlocked = true;
                 }
-                
-                // SAVE PROGRESS TO FIREBASE
-                if(isFirebaseReady && userName) {
-                    const userRef = doc(db, COLLECTION_NAME, userName);
-                    await setDoc(userRef, {
-                        quizProgress: { maxLevel: newMaxLevel, scores: newScores }
-                    }, { merge: true });
-                }
-
+                localStorage.setItem(getUserKey('quizProgress'), JSON.stringify(progress));
                 document.getElementById('unlock-msg').style.display = unlocked ? 'block' : 'none';
             } else {
                 document.getElementById('unlock-msg').style.display = 'none';
@@ -1417,29 +1223,20 @@
         }
 
         // --- Favorites & Mistakes ---
-        async function toggleFavorite(qId) {
-            if(!isFirebaseReady || !userName) return;
-            
-            let favs = localCache.favorites || [];
+        function toggleFavorite(qId) {
+            let favs = JSON.parse(localStorage.getItem(getUserKey('favorites'))) || [];
             const index = favs.indexOf(qId);
-            let newFavs = [...favs];
-            
             if (index > -1) {
-                newFavs.splice(index, 1);
+                favs.splice(index, 1);
             } else {
-                newFavs.push(qId);
+                favs.push(qId);
             }
-            
-            // Optimistic Update
-            localCache.favorites = newFavs;
+            localStorage.setItem(getUserKey('favorites'), JSON.stringify(favs));
             updateFavIcon(qId);
-            
-            // Firebase Update
-            await updateDoc(doc(db, COLLECTION_NAME, userName), { favorites: newFavs });
         }
 
         function updateFavIcon(qId) {
-            let favs = localCache.favorites || [];
+            let favs = JSON.parse(localStorage.getItem(getUserKey('favorites'))) || [];
             const icon = document.getElementById('fav-icon');
             if (favs.includes(qId)) {
                 icon.innerHTML = '♥';
@@ -1450,24 +1247,21 @@
             }
         }
 
-        async function addToMistakes(qId) {
-            if(!isFirebaseReady || !userName) return;
-
-            let mistakes = localCache.mistakes || [];
+        function addToMistakes(qId) {
+            let mistakes = JSON.parse(localStorage.getItem(getUserKey('mistakes'))) || [];
             if (!mistakes.includes(qId)) {
-                await updateDoc(doc(db, COLLECTION_NAME, userName), {
-                    mistakes: arrayUnion(qId)
-                });
+                mistakes.push(qId);
+                localStorage.setItem(getUserKey('mistakes'), JSON.stringify(mistakes));
             }
         }
 
-        window.showFavorites = function() {
+        function showFavorites() {
             hideAllScreens();
             document.getElementById('favorites-screen').style.display = 'block';
             const list = document.getElementById('favorites-list');
             list.innerHTML = "";
             
-            let favs = localCache.favorites || [];
+            let favs = JSON.parse(localStorage.getItem(getUserKey('favorites'))) || [];
             if (favs.length === 0) {
                 list.innerHTML = "<div class='list-empty-msg'>No favorites yet!<br>Go practice and add some!</div>";
                 return;
@@ -1494,13 +1288,13 @@
             }
         }
 
-        window.showMistakes = function() {
+        function showMistakes() {
             hideAllScreens();
             document.getElementById('mistakes-screen').style.display = 'block';
             const list = document.getElementById('mistakes-list');
             list.innerHTML = "";
             
-            let mistakes = localCache.mistakes || [];
+            let mistakes = JSON.parse(localStorage.getItem(getUserKey('mistakes'))) || [];
             if (mistakes.length === 0) {
                 list.innerHTML = "<div class='list-empty-msg'>Great! No mistakes recorded!</div>";
                 return;
@@ -1527,30 +1321,22 @@
         }
 
         // --- Common Utils ---
-        async function saveHistory(score, modeTitle) {
-            if(!isFirebaseReady || !userName) return;
-
-            const newEntry = {
+        function saveHistory(score, modeTitle) {
+            let history = JSON.parse(localStorage.getItem(getUserKey('quizHistory'))) || [];
+            history.push({
                 date: new Date().toLocaleString(),
                 score: score,
                 mode: modeTitle
-            };
-            
-            await updateDoc(doc(db, COLLECTION_NAME, userName), {
-                history: arrayUnion(newEntry)
             });
+            localStorage.setItem(getUserKey('quizHistory'), JSON.stringify(history));
         }
         
-        window.showHistory = function() {
+        function showHistory() {
             hideAllScreens();
             document.getElementById('history-screen').style.display = 'block';
             const list = document.getElementById('history-list');
-            
-            let history = localCache.history || [];
-            // Sort by date (simple approach assumes date string is roughly chronological or insertion order)
-            // Ideally use timestamp in firestore, but we kept structure
-            
-            list.innerHTML = history.slice().reverse().map(h => `
+            let history = JSON.parse(localStorage.getItem(getUserKey('quizHistory'))) || [];
+            list.innerHTML = history.reverse().map(h => `
                 <li style="background:#fff; padding:15px; border-bottom:1px solid #eee; margin-bottom:10px; border-radius:5px;">
                     <strong>${h.mode}</strong> - <span style="color:${h.score>=60?'green':'red'}">${h.score}pts</span>
                     <br><small>${h.date}</small>
@@ -1558,30 +1344,30 @@
             `).join('') || '<p style="text-align:center">No records</p>';
         }
 
-        window.logout = function() { location.reload(); }
-        window.exitQuiz = function() { 
+        function logout() { location.reload(); }
+        function exitQuiz() { 
             // Auto-saved, just exit
             goToDashboard(); 
         }
 
         // --- AI Chat Logic ---
-        window.toggleChatWindow = function() {
+        function toggleChatWindow() {
             const win = document.getElementById('ai-chat-window');
             win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
         }
 
-        window.handleAiKeypress = function(e) {
+        function handleAiKeypress(e) {
             if (e.key === 'Enter') sendAiMessage();
         }
 
-        window.resetAiKey = function() {
+        function resetAiKey() {
             if(confirm("Are you sure you want to clear your API Key?")) {
                 localStorage.removeItem(APP_PREFIX + 'gemini_api_key');
                 alert("API Key cleared!");
             }
         }
 
-        window.sendAiMessage = async function() {
+        async function sendAiMessage() {
             const input = document.getElementById('ai-input');
             const msgArea = document.getElementById('ai-messages');
             const userText = input.value.trim();
@@ -1663,9 +1449,6 @@
             
             msgArea.scrollTop = msgArea.scrollHeight;
         }
-
-        // Attach audioPlayer to window for HTML onclick access
-        window.audioPlayer = audioPlayer;
     </script>
 </body>
 </html>
